@@ -1,0 +1,3412 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inducción corporativa HSEQ – PBI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #003366;
+      color: white;
+      padding: 10px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    header img {
+      max-height: 60px;
+      max-width: 140px;
+      object-fit: contain;
+    }
+    .container {
+      background-color: #fff;
+      padding: 40px;
+      max-width: 1000px;
+      margin: 20px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    section {
+      display: none;
+      opacity: 0;
+      transition: opacity 0.6s ease-in-out;
+    }
+    section.active {
+      display: block;
+      opacity: 1;
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin: 20px auto;
+      max-width: 1000px;
+    }
+    button {
+      background-color: #006599;
+      color: white;
+      font-weight: bold;
+      font-size: 16px;
+      padding: 12px 24px;
+      cursor: pointer;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+    }
+    button:hover {
+      background-color: #004d73;
+    }
+    h1, h2 {
+      color: #006599;
+    }
+    .card {
+      background: #eef5f9;
+      border-left: 4px solid #007BFF;
+      padding: 15px;
+      margin-bottom: 15px;
+      border-radius: 6px;
+    }
+    .seccion-contenido {
+      background-color: #eef5f9;
+      border-left: 6px solid #007BFF;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+      margin-bottom: 30px;
+    }
+    .imagen-seccion {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .imagen-seccion img {
+      max-width: 100%;
+      height: auto;
+      max-height: 350px;
+      border-radius: 12px;
+      border: 1px solid #ccc;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+    .imagen-seccion img:hover {
+      transform: scale(1.02);
+    }
+    .img-superior-derecha {
+      float: right;
+      margin-left: 20px;
+      margin-top: -30px;
+      margin-bottom: 10px;
+      max-width: 70px;
+    }
+    .img-superior-derecha img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    details {
+      background-color: #eef5f9;
+      border-left: 4px solid #007BFF;
+      padding: 10px 15px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+    details summary {
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    details[open] {
+      background-color: #ddeefc;
+    }
+    .grid-dos-columnas {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    @media screen and (max-width: 768px) {
+      .grid-dos-columnas {
+        grid-template-columns: 1fr !important;
+      }
+    }
+    .flip-card {
+      background-color: transparent;
+      width: 100%;
+      max-width: 300px;
+      height: 220px;
+      perspective: 1000px;
+      margin: 20px auto;
+    }
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+    }
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      padding: 20px;
+      box-sizing: border-box;
+    }
+    .flip-card-front {
+      background-color: #007BFF;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+    }
+    .flip-card-back {
+      background-color: #f1f1f1;
+      color: #333;
+      transform: rotateY(180deg);
+      font-size: 15px;
+      overflow-y: auto;
+    }
+     summary {
+      font-weight: bold;
+      color: #005F9E;
+      cursor: pointer;
+      font-size: 1.1em;
+    }
+    summary::-webkit-details-marker {
+      display: none;
+    }
+    details p {
+      margin: 10px 0 0;
+      font-size: 0.95em;
+      color: #333;
+    }
+    .btn-consulta {
+      display: block;
+      width: fit-content;
+      margin: 30px auto;
+      padding: 12px 25px;
+      font-weight: bold;
+      color: white;
+      background: #FF7A00;
+      text-decoration: none;
+      border-radius: 6px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .btn-consulta:hover {
+      background: #e36900;
+    }
+    .control-documental-section {
+  max-width: 1000px;
+  margin: 50px auto;
+  padding: 40px 20px 20px; /* aumentamos padding-top */
+}
+    .flowchart {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 20px;
+      margin-top: 30px;
+    }
+    .flow-step {
+      flex: 1 1 250px;
+      background-color: #e3f2fd;
+      border-left: 6px solid #0288d1;
+      padding: 20px;
+      border-radius: 10px;
+      position: relative;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    }
+    .flow-step::after {
+      content: "➡";
+      position: absolute;
+      right: -20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 24px;
+      color: #0288d1;
+    }
+    .flow-step:last-child::after {
+      display: none;
+    }
+    .hseq-note {
+      margin-top: 40px;
+      background-color: #fff3e0;
+      border-left: 5px solid #ff9800;
+      padding: 15px;
+      border-radius: 8px;
+        }
+    .salida-no-conforme {
+      max-width: 900px;
+      margin: 50px auto;
+      position: relative;
+    }
+    .salida-no-conforme h2 {
+      color: #003366;
+    }
+    .salida-no-conforme p {
+      font-size: 1em;
+      line-height: 1.6;
+      color: #333;
+    }
+    .salida-no-conforme strong {
+      color: #002F5E;
+       }
+    .acciones-sig-section {
+      max-width: 700px;
+      margin: 60px auto;
+      text-align: center;
+      position: relative;
+    }
+.acciones-sig-section .nivel {
+  position: relative;
+  width: 0;
+  margin: 40px auto;
+  border-left: 150px solid transparent;
+  border-right: 150px solid transparent;
+  height: 90px; /* más alto */
+  font-size: 0.95em;
+  line-height: 1.4em;
+  box-sizing: content-box;
+  animation: fadeIn 1s ease-in;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+    .accion-preventiva {
+      border-bottom: 60px solid #689F38;
+      animation-delay: 0.6s;
+    }
+    .accion-correctiva {
+      border-bottom: 60px solid #00796B;
+      margin-top: -20px;
+      animation-delay: 0.4s;
+    }
+    .correccion {
+      border-bottom: 60px solid #0288D1;
+      margin-top: -20px;
+      animation-delay: 0.2s;
+    }
+ .nivel .texto-nivel {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  font-weight: bold;
+  text-align: center;
+  font-size: 0.9em;
+  width: 260px;
+  line-height: 1.3em;
+  pointer-events: none;
+}
+
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .acciones-sig-section .hseq-note {
+      background: #e3f2fd;
+      padding: 15px;
+      border-left: 6px solid #1976D2;
+      border-radius: 8px;
+      margin-top: 30px;
+    }
+ .quiz-section {
+  max-width: 800px;
+  margin: 20px auto 0 auto;  /* Menor margen arriba, sin margen abajo excesivo */
+  background: #fff;
+  padding: 20px 30px 20px 30px; /* Reduce padding superior/inferior */
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.quiz-section h3 {
+  text-align: center;
+  color: #003366;
+  margin-top: 0; /* Elimina margen innecesario arriba */
+}
+
+.quiz-section label {
+  display: block;
+  margin: 10px 0;
+  font-size: 0.95em;
+}
+    .quiz-section p {
+  margin: 0 0 10px 0;
+}
+.quiz-section form {
+  margin-top: 0;
+}
+
+#next-section-btn {
+  display: block;
+  margin: 20px auto;
+  padding: 10px 20px;
+  background: #1976D2;
+  color: white;
+  font-weight: bold;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#capitulo2 {
+  display: none;
+  animation: fadeIn 0.8s ease-in-out;
+  padding: 40px 20px;
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+section ul li {
+  margin: 10px 0;
+  font-size: 1em;
+}
+
+section ul li input[type="checkbox"] {
+  margin-right: 8px;
+  transform: scale(1.2);
+}
+.proyecto-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+.grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  margin: 30px auto;
+  max-width: 1000px;
+}
+    .autoridad-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+    .card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+  margin-bottom: 40px;
+}
+.card {
+  background-color: #ffffff;
+  border-left: 5px solid #007BFF;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease;
+}
+.card:hover {
+  transform: translateY(-5px);
+}
+.card h3 {
+  margin-top: 0;
+  color: #003366;
+}
+.card p {
+  color: #333;
+  font-size: 0.95em;
+}
+.card .ley {
+  font-size: 0.85em;
+  color: #666;
+  margin-top: 8px;
+}
+.imagen-seccion img {
+  max-width: 100%;
+  height: auto;
+  max-height: 350px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+  object-fit: contain;
+  margin: 0 auto 20px;
+  display: block;
+}
+.acordeon-contenedor {
+  margin: 40px 0;
+}
+.acordeon {
+  background-color: #004d73;
+  color: white;
+  cursor: pointer;
+  padding: 16px;
+  width: 100%;
+  border: none;
+  text-align: left;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+.acordeon:hover {
+  background-color: #006599;
+}
+.panel {
+  padding: 0 20px 15px;
+  background-color: #eef5f9;
+  overflow: hidden;
+  display: none;
+  border-left: 5px solid #006599;
+  border-radius: 6px;
+  margin-top: 5px;
+  font-size: 0.95em;
+}
+@media screen and (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+  .quiz-pregunta {
+      background: #f9f9f9;
+      padding: 15px;
+      border-left: 4px solid #003366;
+      margin-bottom: 20px;
+      border-radius: 8px;
+    }
+
+    .quiz-section button {
+      padding: 10px 20px;
+      background: #003366;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .quiz-section button:hover {
+      background: #005b99;
+    }
+    .logo-pbi {
+  height: 48px;
+  max-width: 140px;
+  object-fit: contain;
+  margin-left: 15px;
+  background-color: white;
+  padding: 4px 8px;
+  border-radius: 6px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+  </style>
+</head>
+<body>
+<header>
+  <div><strong>Inducción HSEQ – PBI</strong></div>
+  <img src="https://i.postimg.cc/gcX7rNgd/Logo-PBI.png" alt="Logo PBI" class="logo-pbi">
+</header>
+<div id="barraProgreso" style="height: 6px; background-color: #007BFF; width: 0%; position: fixed; top: 0; left: 0; z-index: 999; transition: width 0.4s;"></div>
+<div class="container">
+  <section class="active">
+    <div class="seccion-contenido">
+      <h2> Bienvenido a la Inducción corporativa HSEQ</h2>
+      <p>Esta inducción está diseñada para brindarte la información clave que necesitas para actuar de forma <strong>segura</strong>, <strong>responsable</strong> y en coherencia con nuestra <strong>cultura HSEQ</strong>.</p>
+      <p>📌 La inducción es <strong>obligatoria</strong>. Su aprobación es requisito previo para cualquier ingreso o actividad dentro de nuestras instalaciones o funciones administrativas u operativas.</p>
+      <div class="imagen-seccion" style="margin-top: 30px;">
+        <img src="https://i.postimg.cc/B6GYKPGW/Logo-portada-induccion-corporativa-PBI.png" alt="Bienvenida HSEQ">
+      </div>
+      <p style="font-weight: bold; color: #007BFF; text-align: center;">¡Gracias por sumarte a un entorno más seguro, eficiente y sostenible! 🌱</p>
+    </div>
+  </section>
+  <section>
+    <div class="img-superior-derecha">
+      <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+    </div>
+    <h2>CAPITULO I - SISTEMA INTEGRADO DE GESTIÓN – Introducción</h2>
+    <div class="seccion-contenido">
+      <details open>
+        <summary>📘 ¿Qué es el SIG?</summary>
+        <p>El Sistema Integrado de Gestión (SIG) es el conjunto de políticas, procesos, procedimientos y recursos que aseguran el cumplimiento de los requisitos en:</p>
+        <ul>
+          <li><strong>Calidad:</strong> productos y servicios confiables.</li>
+          <li><strong>Seguridad y Salud en el Trabajo:</strong> protección integral.</li>
+          <li><strong>Ambiente:</strong> prevención de impactos y cumplimiento legal.</li>
+        </ul>
+      </details>
+      <div class="imagen-seccion">
+        <img src="https://i.postimg.cc/cHLQqwL1/Logo-sistema-integrado.png" alt="Ilustración SIG">
+      </div>
+      <details>
+        <summary>📌 Fundamento normativo</summary>
+        <p>Nuestro SIG se basa en normas como <strong>ISO 9001, ISO 14001 y ISO 45001</strong>, además de requisitos legales, contractuales y del sector Oil & Gas.</p>
+      </details>
+      <details>
+        <summary>🧠 ¿Por qué es importante?</summary>
+        <p>Entender cómo funciona el SIG es clave para prevenir incidentes, cumplir compromisos y asegurar el éxito de nuestras operaciones.</p>
+      </details>
+      </div> 
+  </section>
+  <section>
+    <div class="img-superior-derecha">
+      <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+    </div>
+  <h2>1. ALCANCE DEL SISTEMA INTEGRADO DE GESTIÓN</h2>
+    <div class="seccion-contenido">
+      <p><strong>📌 Alcance certificado del SIG:</strong></p>
+      <p>“Operación y mantenimiento de plantas de compresión y tratamiento de gas y sus derivados o conexos, de gasoductos; comercialización de hidrocarburos líquidos y gaseosos. Generación de energía eléctrica como solución aislada”.</p>
+
+      <p><strong>🏭 Proyectos y operaciones incluidas en el alcance:</strong></p>
+
+      <div class="proyecto-grid">
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Planta SINU 9</h4>
+            </div>
+            <div class="flip-card-back">
+              <p>Planta de tratamiento y compresión de gas en Pueblo Nuevo (Córdoba).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Planta Buenavista – Yopal</h4>
+            </div>
+            <div class="flip-card-back">
+              <p>Planta de tratamiento de gas y procesos complementarios en Yopal (Casanare).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Planta Corrales</h4>
+            </div>
+            <div class="flip-card-back">
+              <p>Infraestructura operativa para manejo de gas natural en Corrales (Boyacá).</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Generación – Eveca</h4>
+            </div>
+            <div class="flip-card-back">
+              <p> Generación de energía eléctrica como solución aislada.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Generación – San Carlos</h4>
+            </div>
+            <div class="flip-card-back">
+              <p>Generación de energía eléctrica como solución aislada</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flip-card">
+          <div class="flip-card-inner">
+            <div class="flip-card-front">
+              <h4>Administración – Bogotá</h4>
+            </div>
+            <div class="flip-card-back">
+              <p>Oficinas administrativas, soporte de procesos estratégicos y de apoyo.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p style="margin-top: 20px; font-weight: bold; color: #007BFF; text-align: center;">¡Este es nuestro campo de acción como organización comprometida con la mejora continua!</p>
+    </div>
+  </section>
+ <section>
+  <div class="img-superior-derecha">
+      <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+    </div>
+  <h2>2. CONOCE EL MAPA DE PROCESOS </h2>
+  <style>
+    .sig-mapa {
+      font-family: Arial, sans-serif;
+      background: #F3F8FB;
+      padding: 40px 20px;
+    }
+
+    .sig-mapa h2 {
+      text-align: center;
+      color: #002F5E;
+      margin-bottom: 20px;
+    }
+
+    .sig-mapa .intro {
+      max-width: 900px;
+      margin: 0 auto 40px;
+      font-size: 1em;
+      color: #333;
+      text-align: center;
+      line-height: 1.6;
+    }
+
+    .sig-mapa .category {
+      margin-top: 40px;
+      font-size: 1.2em;
+      color: #005F9E;
+      border-bottom: 2px solid #80B5E3;
+      padding-bottom: 5px;
+      position: relative;
+    }
+
+    .sig-mapa .gear-icon {
+      position: absolute;
+      right: 0;
+      top: -5px;
+      font-size: 1.2em;
+      color: #FF6F1A;
+    }
+
+    .sig-mapa .grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+    }
+
+    .sig-mapa .card {
+      background: #FFFFFF;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0, 47, 94, 0.15);
+      transition: transform 0.2s;
+      text-align: center;
+      width: 250px;
+      border-top: 4px solid #005F9E;
+    }
+
+    .sig-mapa .card:hover {
+      transform: translateY(-5px);
+      border-color: #FF6F1A;
+      background: #FFF5ED;
+    }
+
+    .sig-mapa .card a {
+      text-decoration: none;
+      color: #002F5E;
+      font-weight: bold;
+    }
+
+    .sig-mapa .interconnection {
+      text-align: center;
+      margin-top: 10px;
+      font-style: italic;
+      color: #666;
+    }
+
+    .sig-mapa .description {
+      text-align: center;
+      font-size: 0.95em;
+      color: #555;
+      margin-top: 10px;
+      margin-bottom: 20px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  </style>
+
+  <div class="sig-mapa">
+    
+    <p class="intro">
+      El mapa de procesos representa gráficamente cómo se interrelacionan los distintos procesos de una organización
+      para cumplir con su propósito. Sirve como guía estructurada para identificar responsabilidades, flujos de información
+      y alineación con los objetivos del Sistema Integrado de Gestión (SIG).
+    </p>
+
+    <div class="category">📊 Procesos Estratégicos <span class="gear-icon">⚙️</span></div>
+    <p class="description">
+      Son los procesos que definen la dirección de la organización. Están orientados a la toma de decisiones, el establecimiento de políticas
+      y la planificación a largo plazo.
+    </p>
+    <div class="grid">
+      <div class="card"><a href="https://drive.google.com/file/d/1-g2lUdsh4BtmaBya79HlegJAGJ7Yx_Hl/view?usp=drive_link" target="_blank">Gestión Gerencial</a></div>
+      <div class="card"><a href="https://drive.google.com/file/d/1ILZXdtMkKHql0DwrVHhAe5IWl-1q6oOv/view?usp=drive_link" target="_blank">Gestión Comercial</a></div>
+    </div>
+    <div class="interconnection">↕ Interacción estratégica con procesos operativos</div>
+
+    <div class="category">⚙️ Procesos Operativos <span class="gear-icon">⚙️</span></div>
+    <p class="description">
+      Son el núcleo del negocio. Representan las actividades clave que generan valor para el cliente y cumplen con la misión de la empresa.
+    </p>
+    <div class="grid">
+      <div class="card"><a href="https://drive.google.com/file/d/1-SH4MmD6JUdv_p3GRmYvyUO51dB7nH2f/view?usp=drive_link" target="_blank">Operaciones</a></div>
+      <div class="card"><a href="https://drive.google.com/file/d/1-YpF9_AFvJddqr60GMLo0_jcRdhK2HoK/view?usp=drive_link" target="_blank">Mantenimiento</a></div>
+    </div>
+    <div class="interconnection">↔ Interrelación operativa con procesos de soporte</div>
+
+    <div class="category">🧩 Procesos de Soporte <span class="gear-icon">⚙️</span></div>
+    <p class="description">
+      Son aquellos procesos que no generan valor directo al cliente, pero son fundamentales para garantizar el funcionamiento eficiente del sistema
+      y el apoyo a los procesos estratégicos y operativos.
+    </p>
+    <div class="grid">
+      <div class="card"><a href="https://drive.google.com/file/d/1-C8qSsHCpA7NfDnn8NWdBLE8pJEG0bVS/view?usp=drive_link" target="_blank">Gestión Humana</a></div>
+      <div class="card"><a href="https://drive.google.com/file/d/1-nHLDGV-VLDNKpXgoor_lohqImHAuX99/view?usp=drive_link" target="_blank">Compras (CMYL)</a></div>
+      <div class="card"><a href="https://drive.google.com/file/d/1LzCdMF3MNxopp7xwvuV_7DA24gugmflM/view?usp=drive_link" target="_blank">IT</a></div>
+      <div class="card"><a href="https://drive.google.com/file/d/1ss1WckhqCk7YCYGE9yDbiNdWkVZL9zEG/view?usp=drive_link" target="_blank">HSEQ</a></div>
+      <div class="card"><a href="https://drive.google.com/file/d/1JN9aDT3twjutKirEB88BXgSiOU9OzSDs/view?usp=sharing" target="_blank">Asuntos Legales</a></div>
+    </div>
+    <div class="interconnection">🔄 Retroalimentación y soporte continuo a todos los procesos</div>
+  </div>
+</section>
+<section>
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+  </div>
+  <h2>3. OBJETIVOS DEL SISTEMA INTEGRADO DE GESTIÓN</h2>
+
+  <div class="grid">
+    <div class="card">
+      <strong>🎓 Formación continua</strong>
+      <p>1.Asegurar la competencia del personal, mediante la participación en los programas de formación.</p>
+    </div>
+    <div class="card">
+      <strong>🛡️ Prevención de riesgos</strong>
+      <p>2.Prevenir accidentes , enfermedades laborales y siniestros viales asegurando las condiciones de seguridad necesarias para el desarrollo de las actividades.</p>
+    </div>
+    <div class="card">
+      <strong>🌱 Protección ambiental</strong>
+      <p>3.Conservar el medio ambiente, previniendo impactos ambientales negativos en el desarrollo de nuestras operaciones.</p>
+    </div>
+    <div class="card">
+      <strong>🤝 Proveedores responsables</strong>
+      <p>4. Trabajar con proveedores que garanticen el cumplimiento de los requisitos legales , de calidad, medio ambiente, SST y de seguridad vial , según corresponda de tal manera se cubran las necesidades a nivel general de la organización.</p>
+    </div>
+    <div class="card">
+      <strong>🏆 Satisfacción del cliente</strong>
+      <p>5. Satisfacer las necesidades de nuestros clientes a un nivel máximo de calidad cumpliendo con los contratos y compromisos adquiridos.</p>
+    </div>
+    <div class="card">
+      <strong>⚖️ Cumplimiento legal</strong>
+      <p>6.Cumplir con la legislación colombiana aplicable en HSE y seguridad vial , así como los requisitos de otra índole.</p>
+    </div>
+    <div class="card">
+      <strong>🚧 Identificación de peligros</strong>
+      <p>7. Identificar los peligros y riesgos ,incluyendo los relacionados con seguridad vial presentes en las actividades desarrolladas por la organización , notificarlos a nuestros colaboradores y realizar las medidas de prevención y control con el fin de prevenir y minimizar los accidentes y enfermedades laborales.</p>
+    </div>
+    <div class="card">
+      <strong>📈 Mejora continua</strong>
+      <p>8. Mejorar continuamente el desempeño de nuestros procesos con el fin de garantizar el cumplimientos de los objetivos organizacionales.</p>
+    </div>
+    <div class="card">
+      <strong>🔍 Gestión de riesgos</strong>
+      <p>9.Identificar y analizar los riesgos asociados a las actividades de los procesos del SIG para gestionar de manera oportuna los riesgos que puedan afectar el logro de objetivos estratégicos y de los procesos.</p>
+    </div>
+  </div>
+</section>
+        
+<section class="autoridad-section">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+  </div>
+    <h2>4. AUTORIDAD, FUNCIONES Y RESPONSABILIDADES</h2>
+    <p>Para garantizar el cumplimiento del SIG, cada rol dentro de la organización tiene asignadas funciones claras, competencias específicas y niveles de autoridad definidos. Esta estructura facilita la ejecución efectiva de los procesos, el control de riesgos y el cumplimiento de requisitos legales y del sistema.</p>
+    <p>Los siguientes documentos describen con claridad las responsabilidades, competencias y niveles de autoridad de los actores clave del SIG:</p>
+ <div class="autoridad-grid">
+      <div class="card"><a href="https://drive.google.com/open?id=1xRqcM-DsEeT2vatw3eMiQyqvmixTkF65" target="_blank">Alta Gerencia</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1Y-8gT-_wEBLOXiPpZqu7YFCiONOIfwEu" target="_blank">Analista HSEQ</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=11XMYDjnA2x1INa_SvT2X-1Ef2NzcP3eR" target="_blank">Auxiliar HSEQ</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1zsmFTjQMAF6BzbgwKBdi04VjM0x2V7PX" target="_blank">Brigadistas</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1L2iHg_6aqjFuRrI-2pbun1NsYXYljEOv" target="_blank">Comité de Convivencia</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1pV-HRbzTZoQmqW17hs8KHgs0-TBYh11x" target="_blank">Comité SIG</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1iPrJ7HO0geFw_zPRFfZGju0wDcjhjbHx" target="_blank">Coordinadores HSEQ</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1bFE10qPEkrH86I5OzK3cqcalMr1_GXkG" target="_blank">COPASST – Vigía SST</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1vW9loI8bDdTsV5dZuiWiJVWCx1GJm8oB" target="_blank">Dirección HSQ</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1ED_xLWQz5IrKnMKeZtvNLHcNyrA1u3fm" target="_blank">Directores</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1pFUqdfdMYsLRIG1cRmVNQMHllqxxCOxe" target="_blank">Gerencias Medias</a></div>
+      <div class="card"><a href="https://drive.google.com/open?id=1xfTnmFzI7oXLyLB2u04wPFJymN6Dw_Bs" target="_blank">Trabajadores en General</a></div>
+    </div>
+    <p style="margin-top: 20px; color: #007BFF; font-weight: bold; text-align: center;">📂 Cada archivo define el rol que desempeñamos en el fortalecimiento del SIG.</p>
+  </section>
+<section class="documentos-sig-section">
+    <div class="img-superior-derecha">
+      <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+    </div>
+    <h2>5. DOCUMENTOS ASOCIADOS AL SIG</h2>
+    <p><strong>📘 El sistema integrado en su componente documental cuenta con diversas jerarquías documentales, estructuradas y estandarizadas</strong> asociadas por cada proceso, según el mapa de procesos bajo requisitos de ISO 9001.</p>
+
+    <details>
+      <summary>📄 Políticas</summary>
+      <p>Declaraciones de compromiso organizacional frente a calidad, SST, ambiente y seguridad vial.</p>
+    </details>
+    <details>
+      <summary>📘 Manuales</summary>
+      <p>Documentos marco que describen el alcance, estructura y lineamientos generales del SIG.</p>
+    </details>
+    <details>
+      <summary>🗂️ Programas</summary>
+      <p>Planes estructurados con metas y actividades para alcanzar objetivos específicos del SIG.</p>
+    </details>
+    <details>
+      <summary>📑 Procedimientos</summary>
+      <p>Instrucciones detalladas para la ejecución de actividades clave de los procesos.</p>
+    </details>
+    <details>
+      <summary>📋 Instructivos</summary>
+      <p>Guías prácticas para tareas específicas o rutinarias dentro de un proceso.</p>
+    </details>
+    <details>
+      <summary>📝 Formatos</summary>
+      <p>Plantillas utilizadas para registrar evidencia, mediciones o seguimiento.</p>
+    </details>
+    <details>
+      <summary>📦 Otros</summary>
+      <p>Requisitos de partes interesadas, matrices, registros y controles complementarios.</p>
+    </details>
+
+    <p style="margin-top: 20px; color: #007BFF; font-weight: bold; text-align: center;">📂 Estos documentos aseguran coherencia, trazabilidad y cumplimiento en el SIG.</p>
+  </section>
+        <section class="repositorio-section" style="margin-top: 50px;">
+           <div class="img-superior-derecha">
+      <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+    </div>
+  <h2>6. REPOSITORIO OFICIAL DEL SIG</h2>
+  <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1000px; margin: auto;">
+
+    <div style="flex: 1 1 300px; background: #ffffff; border-left: 4px solid #005F9E; border-radius: 8px; padding: 15px; box-shadow: 0 0 10px rgba(0,0,0,0.08);">
+      <p style="margin: 0;"><strong>📌 En el sistema integrado de gestión – SIG podrás encontrar la información necesaria para la planificación, ejecución y seguimiento de los procesos y componentes.</strong></p>
+    </div>
+
+    <div style="flex: 1 1 220px; background: #EAF5FF; border-radius: 8px; padding: 15px; text-align: center;">
+      <p>📅 Cuando necesites socializaciones de temas, consulta en el sitio oficial.</p>
+    </div>
+
+    <div style="flex: 1 1 220px; background: #FFEAEA; border-radius: 8px; padding: 15px; text-align: center;">
+      <p>❌ No uses formatos diligenciados previamente. Evita versiones obsoletas.</p>
+    </div>
+
+    <div style="flex: 1 1 220px; background: #E5FFE5; border-radius: 8px; padding: 15px; text-align: center;">
+      <p>📎 Consulta y usa siempre la versión vigente directamente en el sitio oficial.</p>
+    </div>
+
+    <div style="flex: 1 1 220px; background: #FFF9E5; border-radius: 8px; padding: 15px; text-align: center;">
+      <p>🌿 Solo imprime lo estrictamente necesario. Cuidemos el medio ambiente.</p>
+    </div>
+
+    <div style="width: 100%; text-align: center; margin-top: 20px;">
+      <a href="https://drive.google.com/open?id=0AM52xK6HUsgJUk9PVA&usp=drive_copy" target="_blank"
+         style="background-color: #FF7F2A; padding: 12px 25px; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">
+         📂 Consultar Repositorio Oficial del SIG
+      </a>
+    </div>
+  </div>
+</section>
+<section class="control-documental-section">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI">
+  </div>
+
+  <h2>7. CONTROL DOCUMENTAL</h2>
+
+  <p>
+    En <strong>Petroleum Blending International S.A.S E.S.P</strong>, todo documento que forme parte del <strong>Sistema Integrado de Gestión (SIG)</strong> debe estar debidamente controlado para garantizar su vigencia, trazabilidad y acceso oportuno. Esto incluye instructivos, formatos, procedimientos, políticas y registros que incidan en:
+  </p>
+
+  <ul>
+    <li>✔️ La operación segura y eficaz de los procesos.</li>
+    <li>✔️ La prevención de riesgos laborales y ambientales.</li>
+    <li>✔️ La calidad del servicio ofrecido al cliente.</li>
+  </ul>
+
+  <div class="flowchart">
+    <div class="flow-step">
+      <strong>📌 Paso 1:</strong> La necesidad de crear, actualizar o eliminar un documento puede ser identificada por el <strong>líder del proceso</strong>, el <strong>personal administrativo/operativo</strong>, el <strong>área HSEQ</strong>, o como resultado de <strong>auditorías internas, inspecciones o cambios normativos</strong>.
+    </div>
+    <div class="flow-step">
+      <strong>📌 Paso 2:</strong> El líder del proceso redacta o ajusta el documento de acuerdo con la estructura corporativo y los criterios de estandarización, asegurando que sea comprensible, aplicable y alineado con los objetivos del SIG.
+    </div>
+    <div class="flow-step">
+      <strong>📌 Paso 3:</strong> El documento es revisado y aprobado por el mismo líder del proceso o un supervisor designado. Posteriormente, se remite al área HSEQ junto con el formato <strong>FOR-HSEQ-58</strong> completamente diligenciado.
+    </div>
+    <div class="flow-step">
+      <strong>📌 Paso 4:</strong> El equipo HSEQ valida el cumplimiento de los requisitos establecidos en el procedimiento <strong>PRO-HSEQ-01</strong> y formaliza su publicación, actualización o archivo definitivo según corresponda.
+    </div>
+  </div>
+
+  <div class="hseq-note">
+    <strong>✅ Nota importante:</strong> Todo documento debe cumplir con los lineamientos definidos en el procedimiento <strong>PRO-HSEQ-01 – Control de Documentos y Registros</strong>, incluyendo codificación, versión, responsable, fecha de emisión y periodo de revisión.<br><br>
+    <strong>🔐 El área HSEQ</strong> es la única autorizada para incorporar, actualizar o retirar documentos del SIG. También se encarga de su publicación oficial en los medios corporativos y de velar por su difusión controlada.
+  </div>
+</section>
+
+  <section class="salida-no-conforme">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/RhRjxNv7/Salida-no-conforme.png" alt="Ícono salida no conforme">
+  </div>
+
+  <h2>8. ¿QUÉ ES UNA SALIDA NO CONFORME?</h2>
+
+  <p>
+    En todo proceso existen <strong>entradas</strong> (materiales, información, instrucciones) que se transforman mediante actividades para generar <strong>salidas</strong> (productos, servicios, informes, registros, entre otros).
+  </p>
+
+  <p>
+    Una <strong>salida no conforme</strong> es cualquier resultado de un proceso que <strong>no cumple con los requisitos esperados</strong>, ya sean técnicos, de calidad, de seguridad, ambientales o contractuales. Esta situación puede detectarse:
+  </p>
+
+  <ul>
+    <li>🚫 <strong>Antes de entregar</strong> el producto o servicio (ej. revisión interna).</li>
+    <li>⚠️ <strong>Durante la ejecución</strong> de la actividad (ej. control en campo o inspección).</li>
+    <li>📩 <strong>Después de la entrega</strong> al cliente o usuario (ej. reclamos o devoluciones).</li>
+  </ul>
+
+  <p>
+    Ejemplos comunes de salidas no conformes pueden incluir:
+  </p>
+
+  <ul>
+    <li>📄 Formatos incompletos o mal diligenciados.</li>
+    <li>🛠️ Entrega de equipos con fallas o sin calibración.</li>
+    <li>♻️ Manejo inadecuado de residuos o vertimientos.</li>
+    <li>👷‍♂️ Servicios que no cumplen con los protocolos de seguridad o calidad.</li>
+  </ul>
+
+  <p>
+    <strong>¿Qué hacer si detectas una salida no conforme?</strong>  
+    Se debe reportar y gestionar de inmediato siguiendo el procedimiento corporativo <strong>PRO-HSEQ-03 – Oportunidades de mejora, acciones correctivas y preventivas</strong>, para evitar la repetición del error, analizar causas y aplicar mejoras.
+  </p>
+
+  <div class="hseq-note">
+    📌 <strong>Recuerda:</strong> La gestión adecuada de las salidas no conformes fortalece la calidad, protege al cliente, previene riesgos y promueve la mejora continua del SIG.
+  </div>
+</section>
+
+  <section class="acciones-sig-section">
+    <div class="img-superior-derecha">
+      <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Pirámide SIG">
+    </div>
+    <h2>9. TIPO DE ACCIONES EN EL SIG</h2>
+ <p>Las acciones en el Sistema Integrado de Gestión permiten abordar no conformidades reales o potenciales, fortaleciendo la mejora continua y el cumplimiento normativo.</p>
+    
+    <div class="card">
+      <h3>🔰 Acción Preventiva</h3>
+      <p>Eliminar la causa de una no conformidad potencial.</p>
+    </div>
+
+    <div class="card">
+      <h3>🛠 Acción Correctiva</h3>
+      <p>Eliminar la causa de una no conformidad detectada.</p>
+    </div>
+
+    <div class="card">
+      <h3>✅ Corrección</h3>
+      <p>Eliminar o reparar la no conformidad detectada.</p>
+    </div>
+
+    <div class="hseq-note">
+      <strong>📌 Nota:</strong> En <strong>Petroleum Blending International S.A.S E.S.P</strong> estas acciones se documentan mediante procedimientos y formatos cuando se presentan hallazgos en auditorías, inspecciones u otros mecanismos de control.
+    </div>
+    </section>
+    <section class="control-documental-section">
+      <div class="img-superior-derecha">
+      <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Pirámide SIG">
+    </div>
+    <h2>10. PASOS PARA ATENDER UNA ACCIÓN EN EL SIG</h2>
+    <p style="text-align:center; max-width: 800px; margin: 0 auto;">Abordar oportunamente una acción identificada asegura la mejora continua, previene recurrencias y fortalece el desempeño del Sistema Integrado de Gestión. Cada etapa debe ejecutarse con evidencia y trazabilidad.</p>
+
+    <a class="btn-consulta" href="https://drive.google.com/open?id=17c84OutrC2QuzIJTR-0lNW7A9G7uK-Rk&usp=drive_copy" target="_blank">📄 Descargar formato FOR-HSEQ-54</a>
+
+    <div class="flowchart">
+      <div class="flow-step">
+        <h4>📌 Identificar</h4>
+        <p>Detectar la no conformidad mediante inspecciones, auditorías o reportes. Cada líder de proceso es responsable de identificar desviaciones reales o potenciales.</p>
+      </div>
+      <div class="flow-step">
+        <h4>📝 Registrar</h4>
+        <p>Documentar la no conformidad usando el formato FOR-HSEQ-54, definiendo tipo de acción (correctiva, preventiva o de mejora) y fecha de registro.</p>
+      </div>
+      <div class="flow-step">
+        <h4>🔍 Analizar</h4>
+        <p>Realizar análisis de causa raíz cuando aplique, utilizando herramientas como 5 porqués o diagrama de Ishikawa. Incluir evidencia del análisis.</p>
+      </div>
+      <div class="flow-step">
+        <h4>🛠 Determinar acciones</h4>
+        <p>Plantear acciones específicas según la causa raíz, asignar responsables, plazos de ejecución y clasificar la acción según criticidad.</p>
+      </div>
+      <div class="flow-step">
+        <h4>📤 Comunicar</h4>
+        <p>Socializar las acciones definidas con los responsables por medio de correo oficial o reunión, asegurando la comprensión de las tareas asignadas.</p>
+      </div>
+      <div class="flow-step">
+        <h4>📈 Realizar seguimiento</h4>
+        <p>Monitorear el cumplimiento de las acciones en los plazos definidos, verificar su efectividad y documentar el cierre con evidencia clara.</p>
+      </div>
+    </div>
+  </section>
+  <section class="container">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>11. COMUNICACIONES, CONSULTA Y PARTICIPACIÓN EN EL SIG</h2>
+  <p>
+    En <strong>Petroleum Blending International S.A.S E.S.P</strong>, la comunicación efectiva y la participación activa de los trabajadores son pilares del Sistema Integrado de Gestión (SIG).
+  </p>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>📢 ¿Qué se comunica?</h3>
+      <p>Políticas, objetivos, cambios en procesos, indicadores, eventos HSEQ y resultados de auditorías.</p>
+    </div>
+    <div class="card">
+      <h3>🛠 ¿Cómo se comunica?</h3>
+      <p>Medios como correo electrónico, reuniones, Google Sites, carteleras, grupos autorizados y formularios digitales.</p>
+    </div>
+    <div class="card">
+      <h3>🧠 Participación activa</h3>
+      <p>Los trabajadores pueden participar en brigadas, inspecciones, comités y proponer mejoras al sistema.</p>
+    </div>
+    <div class="card">
+      <h3>📨 Canales de aporte</h3>
+      <p>Tarjetas de aporte, encuestas, espacios de formación y retroalimentación directa.</p>
+    </div>
+  </div>
+
+  <div class="hseq-note">
+    🧩 <strong>Recuerda:</strong> Toda sugerencia, aporte o reporte fortalece la cultura de mejora continua. Tu voz es clave para el SIG.
+  </div>
+</section>
+
+  <section id="verificacion-cap1" class="section">
+  <h2>🧠 Revisión de Comprensión – Capítulo I</h2>
+  <p>Antes de continuar al siguiente capítulo, confirma que comprendes los siguientes aspectos clave:</p>
+
+<ul style="list-style: none; padding-left: 0;">
+  <li><label><input type="checkbox" /> ✅ Comprendo qué es una <strong>salida no conforme</strong> y cómo debo reportarla.</label></li>
+  <li><label><input type="checkbox" /> ✅ Reconozco cuándo aplicar una <strong>acción correctiva</strong>, preventiva o de mejora en el SIG.</label></li>
+  <li><label><input type="checkbox" /> ✅ Identifico los pasos clave para gestionar una acción usando el <strong>procedimiento PRO-HSEQ-03</strong>.</label></li>
+  <li><label><input type="checkbox" /> ✅ Sé cómo consultar y utilizar documentos vigentes a través del <strong>control documental</strong>.</label></li>
+  <li><label><input type="checkbox" /> ✅ Comprendí quiénes participan en la revisión y aprobación de documentos nuevos o modificados.</label></li>
+  <li><label><input type="checkbox" /> ✅ Estoy familiarizado con los canales de <strong>comunicación y participación</strong> dentro del SIG.</label></li>
+  <li><label><input type="checkbox" /> ✅ Sé cómo registrar un aporte, sugerencia o mejora mediante tarjetas u otros medios autorizados.</label></li>
+</ul>
+
+  <p><strong>📌 Nota:</strong> Debes confirmar todos los ítems para avanzar al Capítulo II.</p>
+    
+</section>
+  <section class="section">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Icono SST">
+  </div>
+
+  <h2>🦺 Capítulo II – Seguridad y Salud en el Trabajo (SST)</h2>
+
+  <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+    La Seguridad y Salud en el Trabajo es un compromiso de todos. Este capítulo te permitirá comprender los principios básicos que aplican a tu rol, ya sea en campo o en oficina, para prevenir accidentes y enfermedades laborales, proteger la vida y contribuir a un entorno seguro.
+  </p>
+
+  <p style="text-align: center; max-width: 800px; margin: 20px auto 0;">
+    Abordaremos los principales <strong>riesgos laborales</strong>, las <strong>normas de comportamiento</strong>, los <strong>permisos requeridos</strong> y los <strong>controles críticos</strong> que debes conocer para desarrollar tus funciones con responsabilidad.
+  </p>
+
+  <div class="hseq-note" style="margin-top: 30px;">
+    <strong>📌 Recuerda:</strong> Tu compromiso con la SST fortalece la cultura preventiva y demuestra tu liderazgo en el cuidado de la vida.
+  </div>
+</section>
+
+<section class="section">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Icono SST">
+  </div>
+
+  <h2>1. ESTRUCTURA DEL SISTEMA DE GESTIÓN DE SEGURIDAD Y SALUD EN EL TRABAJO</h2>
+
+  <p>El Sistema de Gestión de Seguridad y Salud en el Trabajo (SG-SST) de PBI está alineado con el Decreto 1072 de 2015 y se estructura a partir de tres pilares fundamentales:</p>
+
+  <ul>
+    <li><strong>📜 Política HSEQ:</strong> Marco rector del compromiso organizacional con la seguridad, salud y el ambiente.</li>
+    <li><strong>📊 Matrices de Peligro:</strong> Identificación, evaluación y valoración de los riesgos presentes en cada actividad.</li>
+    <li><strong>🧩 Componentes estratégicos:</strong>
+      <ul>
+        <li><strong>Programas de Gestión del Riesgo (PGR):</strong> Alturas, Vial, Energías Peligrosas, Riesgo Mecánico, Riesgo Químico, Plan de Emergencias, Capacitaciones.</li>
+        <li><strong>Programas de Vigilancia Epidemiológica (SVE):</strong> Cardiovascular, DME, Salud Pública, Auditivo, Visual, Psicosocial.</li>
+        <li><strong>Auditorías del SG-SST:</strong> Internas, Externas y de Clientes.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <div class="hseq-note">
+    <strong>✅ Este sistema permite identificar riesgos, implementar controles efectivos y asegurar el bienestar de todos los trabajadores en cada nivel operativo.</strong>
+  </div>
+</section>
+<section class="section" id="reglamento">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Icono Reglamento">
+  </div>
+
+  <h2>📘 Reglamento de Higiene y Seguridad Industrial</h2>
+
+  <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+    Este reglamento tiene como objetivo la <strong>identificación, reconocimiento, evaluación y control</strong> de los factores de riesgo que se originen en los lugares de trabajo y que puedan afectar la salud de los trabajadores.
+  </p>
+
+  <div style="text-align: center; margin: 20px 0;">
+    <a href="https://drive.google.com/file/d/1vPF8VZr8pXxD4Wtzh0Gy9uEjBTR0RjB1/view" target="_blank" style="background-color: #d2691e; color: white; padding: 12px 24px; border-radius: 8px; font-weight: bold; text-decoration: none;">
+      📥 Ingresa al siguiente link para conocer más
+    </a>
+  </div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <label style="font-size: 16px;">
+      <input type="checkbox" id="checkReglamento" />
+      ✅ Confirmo que he leído y comprendido el reglamento de higiene y seguridad industrial.
+    </label>
+  </div>
+</section>
+<section id="verificacion-politicas" class="section">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>2. POLÍTICAS CORPORATIVAS DE HSEQ</h2>
+  <p>Estas son las políticas esenciales en materia de HSEQ que rigen nuestro actuar diario en PBI:</p>
+
+  <details>
+    <summary>📌 POL-GER-01 Política Integral HSEQ</summary>
+    <p>Establece nuestro compromiso con la protección de la vida, la salud, el ambiente y la calidad en todos los procesos. Promueve la mejora continua, la prevención de incidentes y el cumplimiento de la normatividad aplicable. 👉 
+    <a href="https://drive.google.com/open?id=1To8ksi0_bzYq_hzyExQr8FiCRMw2FOy4" target="_blank">Ver PDF</a></p>
+  </details>
+
+  <details>
+    <summary>🚫POL-GER-02 Política de Prevención SPA</summary>
+    <p>Fomenta ambientes seguros y saludables mediante acciones de promoción, prevención y acompañamiento, orientadas a reducir los riesgos asociados al uso de sustancias psicoactivas en contextos laborales. 👉 
+    <a href="https://drive.google.com/open?id=19_eRtxWZ1DvwmY0pnxqImaBqKB7KbdRr" target="_blank">Ver PDF</a></p>
+  </details>
+
+  <details>
+    <summary>🦺POL-GER-04 Política de Uso de EPP</summary>
+    <p>Establece la obligación del uso adecuado y permanente de los elementos de protección personal requeridos para cada actividad, garantizando la seguridad del trabajador. 👉 
+    <a href="https://drive.google.com/open?id=1vPF8VZr8pXxD4Wtzh0Gy9uEjBTR0RjB1" target="_blank">Ver PDF</a></p>
+  </details>
+
+  <details>
+    <summary>🤝POL-GER-03 Política de Responsabilidad Social</summary>
+    <p>Promueve la generación de valor compartido con comunidades, el respeto por los derechos humanos y el cumplimiento de los principios éticos en la operación. 👉 
+    <a href="https://drive.google.com/open?id=1y8n1bGFYxf-Responsabilidad-Social" target="_blank">Ver PDF</a></p>
+  </details>
+
+ <details>
+  <summary>📵POL-GER-15 Política de Uso Restringido de Celulares en areas operativas</summary>
+  <p>Regula el uso de teléfonos móviles en áreas operativas y clasificadas, donde su uso indebido puede generar riesgos de ignición o interferencia con equipos críticos. Esta política busca prevenir incidentes asociados al uso de dispositivos electrónicos. 👉 
+  <a href="https://drive.google.com/file/d/1Q8r1_EtycpDHc1ZnFAmLMd1twvciCGm9/view?usp=sharing" target="_blank">Ver PDF</a></p>
+</details> 
+  
+  <p>📌 Conocer y aplicar estas políticas es parte de tu compromiso con la vida, el ambiente y la cultura de seguridad en PBI.</p>
+
+  <br />
+  <label style="display: flex; align-items: center; gap: 8px;">
+    <input type="checkbox" id="check-politicas" />
+    ✅ Confirmo que he leído y comprendido las políticas corporativas de PBI.
+  </label>
+</section>
+<section id="verificacion-vial" class="section">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>3. POLÍTICAS DE SEGURIDAD VIAL</h2>
+  <p>El compromiso con la seguridad vial es parte esencial de nuestra cultura organizacional. A continuación, se presentan las políticas que deben ser conocidas y respetadas por todos los trabajadores que conducen o se movilizan en actividades de la compañía:</p>
+
+  <details>
+    <summary>🚗 POL-GER-06 – Política de Seguridad Vial</summary>
+    <p>Promueve prácticas seguras de conducción y control del riesgo vial en todas las operaciones de transporte asociadas a PBI. 👉 
+      <a href="https://drive.google.com/file/d/1NAmg1SaRJ_Rzt3DeqWVO9znXfWT3OZOA/view?usp=drive_link" target="_blank">Ver PDF</a>
+    </p>
+  </details>
+
+  <details>
+    <summary>🎯 POL-GER-11 – Uso del Cinturón de Seguridad</summary>
+    <p>Establece la obligatoriedad del uso correcto del cinturón de seguridad por parte de todos los ocupantes de vehículos. 👉 
+      <a href="https://drive.google.com/file/d/1vnnmxoafnT_O9sMJ2WKYq_RjHd5-pSJj/view?usp=sharing" target="_blank">Ver PDF</a>
+    </p>
+  </details>
+
+  <details>
+    <summary>📡 POL-GER-12 – Uso de Equipos de Comunicación Bidireccional</summary>
+    <p>Regula el uso responsable y seguro de radios, celulares y dispositivos durante la conducción para prevenir accidentes. 👉 
+      <a href="https://drive.google.com/file/d/1vmaaBQnxaE5-6uneyxl2CJjVN9pYz-zc/view?usp=sharing" target="_blank">Ver PDF</a>
+    </p>
+  </details>
+
+  <details>
+    <summary>⏱️ POL-GER-13 – Regulación de Horas de Descanso y Conducción</summary>
+    <p>Garantiza que todo conductor tenga pausas y descansos adecuados para evitar la fatiga y disminuir riesgos en la vía. 👉 
+      <a href="https://drive.google.com/file/d/1vjRhE-gjpbOT3rKO2_j_BPHyKQDYAmqE/view?usp=sharing" target="_blank">Ver PDF</a>
+    </p>
+  </details>
+
+  <details>
+    <summary>🚦 POL-GER-14 – Regulación de Velocidad</summary>
+    <p>Define límites y condiciones seguras de velocidad según el tipo de vía, entorno y condiciones del vehículo. 👉 
+      <a href="https://drive.google.com/file/d/1vhcqNaI844PkqYDt7hh2mypOKxP2Fcq8/view?usp=sharing" target="_blank">Ver PDF</a>
+    </p>
+  </details>
+
+  <p>📌 Conocer y aplicar estas políticas es parte de tu compromiso con la vida, la operación segura y la movilidad responsable.</p>
+
+  <br />
+  <label style="display: flex; align-items: center; gap: 8px;">
+    <input type="checkbox" id="check-vial" />
+    ✅ Confirmo que he leído y comprendido las políticas de seguridad vial de PBI.
+  </label>
+</section>
+<section class="section">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Icono SGRL">
+  </div>
+  <h2>📘 4.DEBERES Y DERECHOS EN EL SGRL</h2>
+  <p style="text-align: center; max-width: 800px; margin: 0 auto;">
+    Dentro del Sistema General de Riesgos Laborales (SGRL) tanto trabajadores como empleadores contamos con deberes y derechos que garantizan un entorno laboral seguro y justo. Conócelos a continuación:
+  </p>
+</section>
+
+<section class="section">
+  <h2>✅ Deberes del Empleador</h2>
+  <p style="text-align:center; color:#666;">Ley 1562 de 2012</p>
+  <div class="seccion-contenido">
+    <ul>
+      <li>💰 Pago de la totalidad de la cotización de los trabajadores a su servicio.</li>
+      <li>📩 Traslado oportuno de las cotizaciones a la ARL.</li>
+      <li>🛡 Procurar el cuidado integral de los trabajadores y ambientes de trabajo (SG-SST).</li>
+      <li>📋 Ejecutar y controlar el cumplimiento del programa de seguridad y salud en el trabajo.</li>
+      <li>📞 Notificar accidentes y enfermedades laborales a la ARL.</li>
+      <li>👥 Conformar el COPASST según normativa vigente.</li>
+      <li>🎓 Facilitar capacitaciones en SST a los trabajadores.</li>
+      <li>📑 Informar a la ARL las novedades laborales (nivel de riesgo, cambios, etc.).</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2>📌 Derechos del Empleador</h2>
+  <p style="text-align:center; color:#666;">Ley 1562 de 2012</p>
+  <div class="seccion-contenido">
+    <ul>
+      <li>🧭 Recibir orientación de la ARL sobre prevención y evaluación de riesgos.</li>
+      <li>📘 Obtener asesoría técnica sin discriminación en programas de SST.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2>🧑‍🔧 Deberes de los Trabajadores</h2>
+  <p style="text-align:center; color:#666;">Decreto 1072 de 2015 – Artículo 2.2.4.6.10</p>
+  <div class="seccion-contenido">
+    <ul>
+      <li>❤️ Procurar el cuidado integral de su salud.</li>
+      <li>🗣️ Suministrar información clara, veraz y completa sobre su estado de salud.</li>
+      <li>📜 Cumplir normas, reglamentos e instrucciones del SG-SST.</li>
+      <li>⚠️ Reportar peligros y riesgos al empleador de forma oportuna.</li>
+      <li>📚 Participar en capacitaciones programadas en SST.</li>
+      <li>🧩 Contribuir al cumplimiento de los objetivos del SG-SST.</li>
+      <li>📄 Cumplir con el documento de <strong>Autoridad, Funciones y Responsabilidades HSEQ</strong>.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2>➕ Deberes Adicionales</h2>
+  <div class="seccion-contenido">
+    <ul>
+      <li>🧼 Mantener en orden los puestos de trabajo y colaborar con la gestión ambiental (residuos, energía, agua).</li>
+      <li>📢 Reportar cualquier incidente o accidente al líder HSEQ dentro de las primeras 24 horas.</li>
+    </ul>
+  </div>
+</section>
+
+<section class="section">
+  <h2>🎯 Derechos de los Trabajadores</h2>
+  <p style="text-align:center; color:#666;">Ley 1562 de 2012</p>
+  <div class="seccion-contenido">
+    <h3>🩺 Asistenciales</h3>
+    <ul>
+      <li>🚑 Atención inicial de urgencias ante accidentes laborales.</li>
+      <li>🏥 Atención médica, terapéutica y farmacéutica por la IPS afiliada.</li>
+      <li>🦷 Servicio de hospitalización, diagnóstico, odontología, tratamientos y medicamentos.</li>
+      <li>♿ Rehabilitación física y profesional.</li>
+      <li>🛠️ Elaboración y reparación de prótesis y órtesis.</li>
+      <li>🚕 Traslado en condiciones necesarias para la prestación de estos servicios.</li>
+    </ul>
+    <h3>💰 Económicos</h3>
+    <ul>
+      <li>📉 Subsidio por incapacidad temporal.</li>
+      <li>⚖️ Indemnización por incapacidad permanente o parcial.</li>
+      <li>🏦 Pensión de invalidez y de sobreviviente.</li>
+      <li>⚰️ Auxilio funerario por fallecimiento del afiliado.</li>
+      <li>📈 Derecho a reincorporación o reubicación post recuperación.</li>
+    </ul>
+  </div>
+</section>
+<section id="trivia-sgrl" class="quiz-section">
+  <h2 style="margin-bottom: 10px;">🧠 Trivia: ¿Qué tanto aprendiste sobre el SGRL?</h2>
+  <p style="text-align: center; margin: 0 0 20px 0;">Selecciona la respuesta correcta en cada caso:</p>
+
+  <form id="quizSgrl">
+    <div style="margin-bottom: 15px;">
+      <p style="margin: 0 0 5px 0;"><strong>1. ¿Quién debe notificar a la ARL sobre un accidente laboral?</strong></p>
+      <label><input type="radio" name="p1" value="a" /> El trabajador afectado</label>
+      <label><input type="radio" name="p1" value="b" /> El jefe inmediato del trabajador</label>
+      <label><input type="radio" name="p1" value="c" /> El empleador</label>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <p style="margin: 0 0 5px 0;"><strong>2. ¿Cuál es uno de los derechos de los trabajadores en el SGRL?</strong></p>
+      <label><input type="radio" name="p2" value="a" /> Sancionar al empleador</label>
+      <label><input type="radio" name="p2" value="b" /> Acceder a atención médica en caso de accidente laboral</label>
+      <label><input type="radio" name="p2" value="c" /> Delegar el uso de EPP en otro compañero</label>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <p style="margin: 0 0 5px 0;"><strong>3. ¿Qué deber tiene el trabajador según el Decreto 1072?</strong></p>
+      <label><input type="radio" name="p3" value="a" /> Exigir aumento de sueldo por riesgo</label>
+      <label><input type="radio" name="p3" value="b" /> Ignorar las normas si ya tiene experiencia</label>
+      <label><input type="radio" name="p3" value="c" /> Informar peligros y riesgos a su empleador</label>
+    </div>
+
+    <div id="resultadoTrivia" style="margin: 20px 0; font-weight: bold; text-align: center;"></div>
+
+    <button type="button" onclick="validarTrivia()">📊 Enviar respuestas</button>
+  </form>
+</section>
+
+<section class="section">
+  <h2>🩺 5.ENFERMEDAD LABORAL Y ACCIDENTES DE TRABAJO</h2>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>🦠 ¿Qué es una Enfermedad Laboral?</h3>
+      <p>Es la enfermedad contraída por exposición a riesgos inherentes a la actividad laboral o al ambiente de trabajo.</p>
+      <p class="ley">Ley 1562 de 2012</p>
+    </div>
+    <div class="card">
+      <h3>⚠️ ¿Qué es un Accidente de Trabajo?</h3>
+      <p>Es un suceso repentino relacionado con el trabajo que causa lesión física, funcional, mental, invalidez o muerte.</p>
+      <p class="ley">Ley 1562 de 2012</p>
+    </div>
+  </div>
+
+  <div class="acordeon-contenedor">
+    <button class="acordeon">📋 Proceso en caso de Enfermedad Laboral</button>
+    <div class="panel">
+      <ul>
+        <li>🧑‍⚕️ El trabajador asiste a la EPS y es remitido a Medicina Laboral.</li>
+        <li>📄 La EPS solicita soportes y diligencia el FUREL.</li>
+        <li>📬 FUREL se remite a la ARL en máximo 48h.</li>
+        <li>📘 Se activa el proceso de calificación conforme a la Resolución 256 de 1999.</li>
+        <li>🕵️‍♂️ La empresa investiga el caso en 15 días.</li>
+        <li>📈 Se ajustan los planes de prevención.</li>
+      </ul>
+      <p style="margin-top:10px;">Consulta el procedimiento PRO-HSEQ-10 👉 <a href="#">Ver aquí</a></p>
+    </div>
+
+    <button class="acordeon">🚨 Casos considerados como Accidente de Trabajo</button>
+    <div class="panel">
+      <ul>
+        <li>📌 Al ejecutar órdenes del empleador.</li>
+        <li>🚍 Durante transporte suministrado por la empresa.</li>
+        <li>💬 En ejercicio de función sindical.</li>
+        <li>⚽ En actividades recreativas o culturales por encargo del empleador.</li>
+      </ul>
+      <div style="text-align:center; margin-top: 10px;">
+        <img src="https://i.postimg.cc/RVx0kJ9x/at.png" alt="Pirámide accidentes" style="max-width: 250px;">
+      </div>
+    </div>
+
+    <button class="acordeon">📞 Reporte de Accidentes Laborales</button>
+    <div class="panel">
+      <ol>
+        <li><strong>Reporte inicial:</strong> El colaborador avisa a su jefe o al área HSEQ.</li>
+        <li><strong>Seguimiento:</strong> Se le contacta para obtener detalles clave del incidente.</li>
+        <li><strong>Reporte formal:</strong> Se notifica a la ARL en los tiempos establecidos.</li>
+      </ol>
+      <div style="margin-top: 10px; background: #fff3cd; padding: 10px; border-left: 5px solid #ffc107;">
+        ☎️ <strong>HSEQ:</strong> 3153369342<br>
+        📧 <strong>Email:</strong> <a href="mailto:cesteban@pbi.com.co">cesteban@pbi.com.co</a>
+      </div>
+    </div>
+  </div>
+</section>
+<section id="copasst" class="seccion">
+  <h2>6.Comité Paritario de Seguridad y Salud en el Trabajo – COPASST</h2>
+
+  <div class="card">
+    <h3>¿Qué es el COPASST?</h3>
+    <p>La legislación colombiana (Resolución 2013 de 1986) regula la organización de los comités de Medicina, Higiene y Seguridad Industrial en los sitios de trabajo.</p>
+    <p>Es un comité encargado de la promoción y vigilancia de las normas de seguridad y salud en el trabajo en empresas públicas y privadas.</p>
+    <p>Para cualquier solicitud puedes escribir a: <strong>copasst@omegaenergy.co</strong></p>
+  </div>
+
+  <div class="card">
+    <h3>Representantes del COPASST – PBI</h3>
+    <ul>
+      <li><strong>Representantes del Empleador</strong>:
+        <ul>
+          <li>👤 Principales: Jaime Davian Reyes – Asistente de Compras</li>
+          <li>👥 Suplentes: Diana Espinosa – Coordinadora Contabilidad e Impuestos</li>
+        </ul>
+      </li>
+      <li><strong>Representantes del Trabajador</strong>:
+        <ul>
+          <li>👤 Principales: Jorge Eduardo Suarez – Ingeniero</li>
+          <li>👥 Suplentes: Luis Eduardo Romero – Operador Planta de Gas</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+
+  <div class="acordeon">📌 Funciones del COPASST</div>
+  <div class="panel">
+    <ul>
+      <li>📊 Planificación de la auditoría</li>
+      <li>📋 Conocer y divulgar la política HSEQ</li>
+      <li>📝 Incluir presupuesto para actividades del COPASST</li>
+      <li>📈 Revisión del plan de capacitación anual</li>
+      <li>🧪 Informar sobre evaluaciones de ambientes de trabajo</li>
+      <li>🔁 Revisar los reportes de gestión del cambio</li>
+      <li>📣 Divulgar resultados de revisión por la alta dirección</li>
+    </ul>
+    <p><strong>Nota:</strong> Esta información debe ser trabajada en conjunto por todas las áreas.</p>
+  </div>
+</section>
+<section id="comite-convivencia" class="seccion">
+  <h2>7.Comité de Convivencia Laboral</h2>
+
+  <div class="card">
+    <p>
+      El Comité de Convivencia Laboral es un mecanismo preventivo y confidencial para la recepción y trámite de quejas relacionadas con <strong>acoso laboral</strong> y <strong>acoso sexual</strong>, conforme a la <strong>Ley 1010 de 2006</strong> y la <strong>Resolución 2646 de 2008</strong>. Tiene como función principal fomentar relaciones laborales saludables.
+    </p>
+    <ul>
+      <li>Recibir y analizar quejas por conductas de acoso.</li>
+      <li>Convocar a las partes involucradas a espacios de diálogo.</li>
+      <li>Generar recomendaciones para mejorar el ambiente laboral.</li>
+      <li>Remitir casos al empleador si no se logra solución directa.</li>
+    </ul>
+    <p>
+      📧 Puedes comunicarte con el comité a través del correo:
+      <a href="mailto:comiteconvivencia@omegaenergy.com">comiteconvivencia@omegaenergy.com</a> (utilizando el formato corporativo).
+    </p>
+  </div>
+
+  <div class="imagen-seccion">
+    <img src="https://i.postimg.cc/vHLwBQzd/CCL.png" alt="Miembros del Comité de Convivencia Laboral">
+  </div>
+
+  <div class="grid" style="justify-content: center;">
+    <a href="https://docs.google.com/spreadsheets/d/1MKktbEewrnDJk4Ri4Qh7UFujxfCCbMFB/edit?usp=sharing&ouid=109327772537169064323&rtpof=true&sd=true" target="_blank" class="btn-consulta">📄 Descargar Formato de Queja</a>
+    <a href="https://drive.google.com/file/d/1T60djjTvdxuPB3N2_nvAM8hv1MsW6Url/view?usp=sharing" target="_blank" class="btn-consulta">📘 Ver Procedimiento Oficial</a>
+  </div>
+
+  <div class="acordeon-contenedor">
+    <button class="acordeon">¿Por qué es importante este comité?</button>
+    <div class="panel">
+      <p>
+        El acoso laboral puede afectar la salud mental, la productividad y el clima organizacional. Reportar a tiempo evita su escalamiento y garantiza entornos seguros para todos los colaboradores. Este comité actúa con imparcialidad, confidencialidad y en pro de una sana convivencia.
+      </p>
+    </div>
+  </div>
+</section>
+<section>
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>8. REPORTE DE ACTOS Y CONDICIONES INSEGURAS</h2>
+
+  <p>Los accidentes laborales no ocurren por casualidad. Usualmente son el resultado de:</p>
+
+  <div class="card-grid">
+    <div class="card">
+    
+      <h3>🔧 Condiciones Inseguras</h3>
+      <p>Situaciones físicas inapropiadas como: superficies resbalosas, maquinaria sin protecciones, mala iluminación, desorden, ventilación inadecuada, entre otras.</p>
+    </div>
+
+    <div class="card">
+  
+      <h3>⚠️ Actos Inseguros</h3>
+      <p>Acciones peligrosas como: trabajar sin autorización, no usar EPP, improvisar herramientas, generar desorden o realizar tareas sin conocimiento del riesgo.</p>
+    </div>
+  </div>
+
+  <p style="margin-top: 20px;">🔄 Cuando estos actos o condiciones se repiten y no se corrigen, <strong>la probabilidad de un accidente o enfermedad laboral aumenta considerablemente</strong>.</p>
+
+  <hr style="margin: 30px 0;">
+
+  <h3>🎯 ¿Qué hacer si identificas una situación riesgosa?</h3>
+  <p><strong>PBI ha definido el mecanismo oficial de reporte denominado:</strong></p>
+  <h3 style="text-align:center; color:#003366;">📋 TARJETAS DE APORTE</h3>
+
+  <p>Es un sistema formal, accesible y trazable para informar sobre:</p>
+
+  <ul>
+    <li>Actos o condiciones inseguras</li>
+    <li>Incidentes ambientales o riesgos operativos</li>
+    <li>Ideas de mejora continua o buenas prácticas</li>
+  </ul>
+
+  <div style="display:flex; flex-wrap: wrap; align-items: center; justify-content: center; margin-top: 20px;">
+    <div style="margin: 10px;">
+      <img class="qr" src="https://i.postimg.cc/0Nhp4dDd/Captura-de-pantalla-2025-06-17-093430.png" alt="QR formulario tarjetas" style="max-width: 180px;">
+      <p style="text-align:center;">📲 Escanea el QR para reportar</p>
+    </div>
+    <div style="margin: 10px;">
+      
+    </div>
+  </div>
+
+  <p style="text-align:center; font-weight:bold; margin-top: 30px;">
+    🙌 ¡Gracias por ser parte activa de nuestra cultura preventiva y de mejora continua!
+  </p>
+</section>
+
+<section>
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>9.DISCIPLINA OPERATIVA Y SEGURIDAD BASADA EN EL COMPORTAMIENTO</h2>
+
+  <div class="seccion-contenido">
+    <p><strong>Disciplina Operativa</strong> es la ejecución constante y rigurosa de las tareas conforme a los estándares, procedimientos y controles definidos. Implica hacer siempre lo que debe hacerse, de la forma correcta y en el momento adecuado, incluso cuando nadie está mirando.</p>
+
+    <p><strong>Seguridad Basada en el Comportamiento (SBC)</strong> es una estrategia que busca comprender y modificar las conductas individuales y colectivas que afectan la seguridad, promoviendo una cultura preventiva a través de la observación, el feedback positivo y el liderazgo visible.</p>
+    
+    <details>
+      <summary>🎯 ¿Cómo se relacionan?</summary>
+      <p>Ambos enfoques apuntan a reducir errores humanos y mejorar el desempeño operativo. La disciplina operativa establece los “qué y cómo”; la SBC trabaja sobre el “por qué” de nuestras decisiones y hábitos diarios.</p>
+    </details>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>⚙️ Claves de la Disciplina Operativa</h3>
+        <ul>
+          <li>Seguir los procedimientos paso a paso</li>
+          <li>No improvisar tareas críticas</li>
+          <li>Respetar permisos de trabajo y análisis de riesgo</li>
+          <li>Verificar siempre antes de actuar</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h3>👥 Prácticas de SBC</h3>
+        <ul>
+          <li>Observar conductas seguras e inseguras</li>
+          <li>Dar retroalimentación inmediata</li>
+          <li>Reconocer comportamientos ejemplares</li>
+          <li>Corregir con respeto y liderazgo</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="hseq-note">
+      <strong>💡 Recuerda:</strong> La disciplina operativa es el marco técnico; la seguridad basada en el comportamiento es la palanca humana. Juntas salvan vidas.
+    </div>
+  </div>
+</section>
+<section id="trivia-seguridad-comportamiento" class="quiz-section">
+  <h2 style="margin-bottom: 10px;">🧠 Trivia: Seguridad Basada en el Comportamiento y Tarjetas de Aporte</h2>
+  <p style="text-align: center; margin: 0 0 20px 0;">Selecciona la respuesta correcta en cada caso:</p>
+
+  <form id="quizSeguridadComportamiento">
+    <div style="margin-bottom: 15px;">
+      <p style="margin: 0 0 5px 0;"><strong>1. ¿Qué es un acto inseguro?</strong></p>
+      <label><input type="radio" name="sc_p1" value="a" /> Una falla técnica del equipo</label>
+      <label><input type="radio" name="sc_p1" value="b" /> Una condición externa no controlable</label>
+      <label><input type="radio" name="sc_p1" value="c" /> Una acción realizada por una persona que genera riesgo</label>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <p style="margin: 0 0 5px 0;"><strong>2. ¿Cuál es el propósito de las tarjetas de aporte?</strong></p>
+      <label><input type="radio" name="sc_p2" value="a" /> Solicitar vacaciones</label>
+      <label><input type="radio" name="sc_p2" value="b" /> Reportar actos inseguros, ideas de mejora o incidentes</label>
+      <label><input type="radio" name="sc_p2" value="c" /> Controlar la asistencia</label>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <p style="margin: 0 0 5px 0;"><strong>3. ¿Qué es la disciplina operativa?</strong></p>
+      <label><input type="radio" name="sc_p3" value="a" /> Seguir procedimientos solo cuando hay supervisión</label>
+      <label><input type="radio" name="sc_p3" value="b" /> Hacer lo correcto siempre, según estándares establecidos</label>
+      <label><input type="radio" name="sc_p3" value="c" /> Cumplir órdenes verbales únicamente</label>
+    </div>
+
+    <div style="margin-bottom: 20px;">
+      <p style="margin: 0 0 5px 0;"><strong>4. ¿Cuál de las siguientes es una estrategia de la seguridad basada en el comportamiento?</strong></p>
+      <label><input type="radio" name="sc_p4" value="a" /> Aplicar sanciones de inmediato</label>
+      <label><input type="radio" name="sc_p4" value="b" /> Evitar retroalimentación para no generar incomodidad</label>
+      <label><input type="radio" name="sc_p4" value="c" /> Observar, dar retroalimentación y reforzar conductas seguras</label>
+    </div>
+
+    <div id="resultadoTriviaSeguridad" style="margin: 20px 0; font-weight: bold; text-align: center;"></div>
+
+    <button type="button" onclick="validarTriviaSeguridad()">📊 Enviar respuestas</button>
+  </form>
+</section>
+
+<section id="seleccion-rol" style="text-align: center; max-width: 900px; margin: 40px auto;">
+  <h2>👥 ¿Cuál es tu rol dentro de la organización?</h2>
+  <p style="font-size: 1.1em; line-height: 1.6; max-width: 750px; margin: 0 auto;">
+    A partir de este punto, accederás a contenidos diseñados especialmente según tu rol en <strong>Petroleum Blending International S.A.S E.S.P</strong>.
+    Ya conoces la base de nuestro <strong>Sistema Integrado de Gestión (SIG)</strong>, ahora es momento de explorar lo que aplica directamente a tus funciones diarias.
+  </p>
+
+  <div class="hseq-note" style="margin: 25px auto 15px; font-size: 1em;">
+    🎯 <strong>Selecciona tu rol para continuar con una experiencia de inducción personalizada.</strong>
+  </div>
+
+  <div style="margin-top: 15px;">
+    <select id="rolSeleccionado" onchange="filtrarContenidoPorRol()" style="padding: 12px 20px; font-size: 1em; border-radius: 6px; border: 1px solid #ccc; width: 280px;">
+      <option value="">-- Selecciona tu rol --</option>
+      <option value="administrativo">👨‍💼 Personal Administrativo</option>
+      <option value="operativo">👷 Personal Operativo</option>
+    </select>
+  </div>
+</section>
+
+<section data-rol="administrativo">
+  <h2>1. PELIGROS Y RIESGOS EN OFICINA</h2>
+  <p>Durante tus actividades en oficina puedes estar expuesto a diversos riesgos. A continuación, te mostramos los más representativos, con ejemplos y medidas preventivas:</p>
+
+  <details>
+    <summary>⚡ Riesgo Eléctrico</summary>
+    <p><strong>Ejemplos:</strong> extensiones en mal estado, sobrecarga de tomas, equipos sin mantenimiento.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Usa extensiones con polo a tierra en buen estado.</li>
+      <li>No sobrecargues los tomacorrientes.</li>
+      <li>Solicita mantenimiento preventivo para equipos eléctricos.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🤕 Riesgo Ergonómico</summary>
+    <p><strong>Ejemplos:</strong> mala postura, sillas inadecuadas, pantallas mal ubicadas.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Ajusta la silla y el monitor a tu altura visual.</li>
+      <li>Realiza pausas activas cada 2 horas.</li>
+      <li>Solicita una valoración ergonómica si presentas molestias.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🔥 Riesgo de Incendio</summary>
+    <p><strong>Ejemplos:</strong> acumulación de papel cerca de enchufes, equipos eléctricos sin supervisión.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Mantén zonas libres de materiales inflamables.</li>
+      <li>Apaga equipos al terminar la jornada laboral.</li>
+      <li>Identifica las salidas de emergencia y extintores.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>💦 Riesgo de Caídas</summary>
+    <p><strong>Ejemplos:</strong> cables sueltos en el piso, pisos mojados sin señalización.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Organiza los cables con canaletas o sujetadores.</li>
+      <li>Reporta derrames o superficies resbalosas.</li>
+      <li>Evita correr en zonas internas.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🔒 Riesgo Psicosocial</summary>
+    <p><strong>Ejemplos:</strong> sobrecarga laboral, conflictos, estrés sostenido.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Comunícate de forma respetuosa y asertiva.</li>
+      <li>Informa si te sientes afectado emocionalmente.</li>
+      <li>Participa en pausas activas y programas de bienestar.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🦠 Riesgo Biológico</summary>
+    <p><strong>Ejemplos:</strong> contacto con superficies contaminadas, exposición a virus en espacios cerrados.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Lávate las manos frecuentemente y desinfecta tu área de trabajo.</li>
+      <li>Evita acudir a la oficina si presentas síntomas.</li>
+      <li>Mantén ventilados los espacios cerrados.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🚨 Riesgos durante evacuación o emergencia</summary>
+    <p><strong>Ejemplos:</strong> tropiezos, caídas o desorientación al evacuar rápidamente.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Conserva la calma y sigue las instrucciones de la brigada.</li>
+      <li>No uses ascensores durante una evacuación.</li>
+      <li>Dirígete al punto de encuentro sin correr.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🛗 Riesgo en el uso de ascensores</summary>
+    <p><strong>Ejemplos:</strong> fallas eléctricas, atrapamientos o mal uso del ascensor.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>No uses el ascensor durante emergencias.</li>
+      <li>Reporta comportamientos extraños en el equipo.</li>
+      <li>No bloquees las puertas ni sobrecargues la cabina.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>💡 Riesgo por Iluminación Deficiente</summary>
+    <p><strong>Ejemplos:</strong> fatiga visual, errores por falta de visibilidad, tropiezos en áreas oscuras.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Solicita el cambio de bombillos o luminarias dañadas.</li>
+      <li>Ubica tu escritorio en un lugar bien iluminado.</li>
+      <li>Evita reflejos en la pantalla ajustando su posición.</li>
+    </ul>
+  </details>
+  <details>
+  <summary>🚪 Riesgo Público</summary>
+  <p><strong>Ejemplos:</strong> ingreso de personas no autorizadas, comportamientos sospechosos en zonas comunes, hurto de objetos personales.</p>
+  <p><strong>Medidas preventivas:</strong></p>
+  <ul>
+    <li>No dejes pertenencias visibles o sin supervisión en espacios comunes.</li>
+    <li>Reporta inmediatamente al personal de seguridad cualquier situación sospechosa.</li>
+    <li>Verifica la identidad de las personas antes de permitir su ingreso o compartir información.</li>
+  </ul>
+</details>
+
+</section>
+<section data-rol="administrativo">
+  <h2>2. PELIGROS Y RIESGOS EN TRABAJO DESDE CASA</h2>
+  <p>Cuando realizas tus actividades desde casa también estás expuesto a riesgos que pueden afectar tu bienestar. Aquí te mostramos los más comunes y cómo prevenirlos:</p>
+
+  <details>
+    <summary>⚡ Riesgo Eléctrico</summary>
+    <p><strong>Ejemplos:</strong> uso de regletas defectuosas, conexiones sin puesta a tierra, sobrecarga de tomacorrientes.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Usa extensiones en buen estado con protección térmica.</li>
+      <li>No conectes varios equipos de alto consumo en un mismo punto.</li>
+      <li>Revisa periódicamente el estado de cables y enchufes.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🤕 Riesgo Ergonómico</summary>
+    <p><strong>Ejemplos:</strong> trabajar en la cama o el sofá, mala posición de la pantalla, falta de pausas.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Utiliza una silla con respaldo y mesa adecuada.</li>
+      <li>Alinea el monitor a la altura de los ojos.</li>
+      <li>Haz pausas activas cada 2 horas para estirarte y descansar la vista.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>💦 Riesgo de Caídas o Golpes</summary>
+    <p><strong>Ejemplos:</strong> cables atravesando zonas de paso, alfombras sueltas, objetos en el suelo.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Organiza el espacio para evitar obstáculos.</li>
+      <li>Asegura alfombras y pasa cables por los bordes o esquinas.</li>
+      <li>Evita trabajar cerca de zonas con riesgo de tropiezos.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🔒 Riesgo Psicosocial</summary>
+    <p><strong>Ejemplos:</strong> exceso de carga, aislamiento, interrupciones constantes.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Establece horarios definidos para tu jornada.</li>
+      <li>Comunica límites claros a quienes conviven contigo.</li>
+      <li>Participa en espacios virtuales de bienestar o pausas activas.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>💡 Iluminación Inadecuada</summary>
+    <p><strong>Ejemplos:</strong> trabajar con luz tenue o reflejos directos sobre la pantalla.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Ubica tu puesto cerca de una fuente de luz natural si es posible.</li>
+      <li>Usa lámparas de escritorio con buena iluminación difusa.</li>
+      <li>Ajusta brillo y contraste del monitor para evitar fatiga visual.</li>
+    </ul>
+  </details>
+</section>
+  
+  <section data-rol="administrativo">
+  <h2>3. NORMAS DE SEGURIDAD Y BIENESTAR EN OFICINA</h2>
+  <p>El trabajo administrativo también implica cuidados esenciales para la salud y el bienestar. A continuación, te compartimos recomendaciones prácticas sobre higiene postural, salud mental, salud visual y más:</p>
+
+  <details>
+  <summary>🪑 Higiene Postural</summary>
+  <p><strong>Ejemplos:</strong> malas posturas al sentarse, escritorio no ajustado, uso prolongado de portátil en posiciones incómodas.</p>
+  <p><strong>Medidas preventivas:</strong></p>
+  <ul>
+    <li>Mantén pies apoyados en el suelo y espalda recta con soporte lumbar.</li>
+    <li>Ajusta el monitor al nivel de los ojos y el teclado a la altura de los codos.</li>
+    <li>Evita cruzar las piernas durante tiempos prolongados.</li>
+  </ul>
+  <img src="https://i.postimg.cc/4xwnXhP9/Higiene-postural.png" alt="Higiene postural en oficina" style="max-width:100%; height:auto; margin-top:15px; border-radius:8px; box-shadow: 0 2px 6px rgba(0,0,0,0.2);">
+</details>
+
+
+  <details>
+    <summary>🧠 Salud Mental</summary>
+    <p><strong>Ejemplos:</strong> estrés laboral continuo, presión por resultados, dificultad para desconectar fuera del horario.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Organiza tu jornada con pausas activas y tiempos de desconexión.</li>
+      <li>Acude a los programas de apoyo psicosocial si te sientes afectado.</li>
+      <li>Promueve la comunicación respetuosa y el trabajo en equipo.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>👁️ Salud Visual</summary>
+    <p><strong>Ejemplos:</strong> exposición prolongada a pantallas, iluminación deficiente, mala ubicación del monitor.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Aplica la regla 20-20-20: cada 20 minutos, mira a 20 pies de distancia por 20 segundos.</li>
+      <li>Evita reflejos directos en la pantalla y ajusta el brillo.</li>
+      <li>Consulta regularmente al optómetra si sientes fatiga visual.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🥗 Hábitos Saludables</summary>
+    <p><strong>Ejemplos:</strong> sedentarismo, consumo excesivo de café o alimentos procesados, omisión de comidas.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Incluye frutas, agua y alimentos frescos en tu jornada laboral.</li>
+      <li>Levántate cada hora y realiza estiramientos.</li>
+      <li>Participa en actividades de promoción de la salud ofrecidas por la empresa.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>✂️ Uso Seguro de Herramientas de Papelería</summary>
+    <p><strong>Ejemplos:</strong> cortes con bisturíes o tijeras, grapas mal manipuladas, daños al usar perforadoras o cuchillas.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Utiliza siempre las herramientas de papelería con precaución y atención.</li>
+      <li>Guarda cuchillas y tijeras en lugares seguros después de usarlas.</li>
+      <li>Reporta herramientas dañadas para su reemplazo oportuno.</li>
+    </ul>
+  </details>
+</section>
+
+   <section data-rol="administrativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>4. PLAN DE EMERGENCIAS EN OFICINAS ADMINISTRATIVAS</h2>
+  <p>Todos los colaboradores deben conocer y seguir las instrucciones establecidas en el plan de emergencias del edificio. Actuar con calma y responsabilidad puede marcar la diferencia ante una situación crítica:</p>
+
+  <div class="accordion">
+    <details>
+      <summary>🔊 Activación de la alarma</summary>
+      <div class="card">
+        <p>La alarma se activa mediante sirena o instrucciones por altavoz. Detén tus actividades y prepárate para evacuar de manera ordenada, sin correr ni devolver objetos.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>📍 Rutas y planos de evacuación</summary>
+      <div class="card">
+        <p>Identifica previamente las rutas señalizadas y salidas de emergencia. Nunca utilices ascensores durante la evacuación.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>🆘 Brigadistas identificados</summary>
+      <div class="card">
+        <p>Sigue siempre las indicaciones del personal de brigada. Ellos llevan chaleco naranja y han sido entrenados para actuar en situaciones de riesgo.</p>
+      </div>
+    </details>
+
+    <details>
+      <summary>📦 Punto de encuentro</summary>
+      <div class="card">
+        <p>Concentra tu atención en llegar al punto seguro designado detrás del CC Santa Ana. Permanece allí hasta nueva indicación del coordinador de emergencias.</p>
+      </div>
+    </details>
+  </div>
+
+  <div style="text-align: center; margin-top: 20px;">
+    <h3>📌 Plano de evacuación – Nivel actual</h3>
+    <img src="https://i.postimg.cc/kGj7FnH7/PLANO-OFICINA.png" alt="Plano de evacuación" style="max-width: 100%; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); margin-top: 10px;">
+    <p style="font-size: 0.9em; color: #666; margin-top: 10px;">Consulta periódicamente la ubicación de las salidas y del punto de encuentro. Asegúrate de saber cómo actuar en tu área.</p>
+  </div>
+
+  <p style="margin-top: 20px; font-weight: bold;">📣 En caso de detectar un conato de incendio, fuga u otro incidente grave, notifícalo de inmediato a la brigada, seguridad o línea de emergencias internas.</p>
+</section>
+
+<section data-rol="administrativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>5. MANEJO DE EXTINTORES EN ENTORNOS ADMINISTRATIVOS</h2>
+
+  <p>En tu entorno de trabajo puede haber diferentes tipos de extintores. Conocer su uso correcto puede ayudarte a actuar ante una emergencia inicial (solo si es seguro hacerlo).</p>
+  <p><strong>Importante:</strong> No intentes usar un extintor si no has sido capacitado o si existe riesgo personal. Notifica de inmediato a brigadistas o seguridad.</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+    <!-- Extintor ABC -->
+    <div style="flex: 1 1 280px; background: #fff9e6; border-left: 6px solid #f9c922; border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <h4>🟡 Extintor ABC</h4>
+      <p><strong>Clase:</strong> A, B y C</p>
+      <ul style="padding-left: 20px;">
+        <li><span style="color: green;">✔</span> Papel, madera, plásticos, aceites, electricidad.</li>
+        <li><span style="color: green;">✔</span> Útil en la mayoría de oficinas.</li>
+        <li><span style="color: red;">❌</span> No apto para espacios sin ventilación.</li>
+      </ul>
+      <img src="https://i.postimg.cc/Bny0bGmN/EXTINTOR-TIPO-ABC.jpg" alt="Extintor ABC"
+           style="height: 120px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); margin: 10px auto; display: block;">
+    </div>
+
+    <!-- Extintor Solkaflam -->
+    <div style="flex: 1 1 280px; background: #e6f4ff; border-left: 6px solid #007BFF; border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <h4>⚪ Extintor Solkaflam</h4>
+      <p><strong>Clase:</strong> C</p>
+      <ul style="padding-left: 20px;">
+        <li><span style="color: green;">✔</span> Equipos eléctricos delicados: tableros, centros de cómputo.</li>
+        <li><span style="color: green;">✔</span> No deja residuos.</li>
+        <li><span style="color: red;">❌</span> Riesgoso en espacios cerrados sin ventilación.</li>
+      </ul>
+      <img src="https://i.postimg.cc/y6hj6dLd/Solkaflam.png" alt="Extintor Solkaflam"
+           style="height: 120px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); margin: 10px auto; display: block;">
+    </div>
+
+    <!-- Extintor CO2 -->
+    <div style="flex: 1 1 280px; background: #ffeaea; border-left: 6px solid #e60000; border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <h4>🔴 Extintor CO₂</h4>
+      <p><strong>Clase:</strong> C</p>
+      <ul style="padding-left: 20px;">
+        <li><span style="color: green;">✔</span> Tableros eléctricos, UPS, impresoras industriales.</li>
+        <li><span style="color: green;">✔</span> No deja residuos.</li>
+        <li><span style="color: red;">❌</span> Puede causar asfixia si no hay ventilación.</li>
+      </ul>
+      <img src="https://i.postimg.cc/V6fDcJXh/TIPO-CO2.png" alt="Extintor CO2"
+           style="height: 120px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); margin: 10px auto; display: block;">
+    </div>
+  </div>
+
+  <p style="margin-top: 20px; font-size: 14px; color: #666;">📌 Todos los extintores tienen una etiqueta que indica su tipo. No improvises: actúa solo si conoces el procedimiento y tienes capacitación básica.</p>
+</section>
+
+<section data-rol="administrativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>6. SEGURIDAD VIAL Y DESPLAZAMIENTOS URBANOS</h2>
+  <p>Así trabajes en oficinas, todos nos desplazamos por vías públicas. Tu seguridad comienza antes de llegar al trabajo. Aplica estas recomendaciones al conducir, caminar o usar transporte público:</p>
+
+  <div class="accordion">
+    <details>
+      <summary>🚗 Conducción segura hacia el trabajo</summary>
+      <div class="card">
+        <ul>
+          <li>Respeta los límites de velocidad, señales de tránsito y semáforos.</li>
+          <li>Evita el uso del celular mientras conduces, incluso en trayectos cortos.</li>
+          <li>Revisa luces, frenos y neumáticos periódicamente.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>🚶‍♀️ Seguridad como peatón</summary>
+      <div class="card">
+        <ul>
+          <li>Camina siempre por andenes y cruza por las esquinas o pasos peatonales.</li>
+          <li>Evita distraerte con el celular o audífonos al cruzar calles.</li>
+          <li>Haz contacto visual con el conductor antes de cruzar.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>🚌 Transporte público</summary>
+      <div class="card">
+        <ul>
+          <li>Espera el bus o transporte en zonas seguras y visibles.</li>
+          <li>No abordes vehículos no autorizados.</li>
+          <li>Sujétate durante el trayecto para evitar caídas o lesiones.</li>
+        </ul>
+      </div>
+    </details>
+
+    <details>
+      <summary>🛵 Transporte alternativo (bicicleta, patineta)</summary>
+      <div class="card">
+        <ul>
+          <li>Usa casco y elementos reflectivos en todo momento.</li>
+          <li>Desplázate por ciclorrutas cuando estén disponibles.</li>
+          <li>Evita zonas oscuras o poco transitadas en horarios nocturnos.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <p style="margin-top: 20px; font-size: 14px; color: #666;">📌 Tu vida es lo más valioso. Elige rutas seguras, mantente alerta y contribuye a una movilidad responsable dentro y fuera del horario laboral.</p>
+</section>
+
+<section data-rol="operativo">
+  <h2>1. PELIGROS Y RIESGOS EN CAMPO</h2>
+  <p>Durante tus actividades como personal operativo, ya sea de planta o por contratación temporal, puedes estar expuesto a diversos peligros. A continuación, te presentamos los más representativos junto con medidas preventivas clave:</p>
+
+  <details>
+    <summary>⚡ Riesgo eléctrico</summary>
+    <p>Tableros, cables expuestos o equipos energizados pueden causar electrocución o arco eléctrico.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>No manipules equipos eléctricos sin autorización del área técnica.</li>
+      <li>Verifica que cables, extensiones o herramientas estén en buen estado.</li>
+      <li>Evita conectar varios equipos a una sola toma.</li>
+      <li>Mantén los pies secos y evita operar herramientas eléctricas bajo lluvia.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🧪 Riesgos químicos</summary>
+    <p>Contacto con sustancias como combustibles, ácidos, solventes o lubricantes puede causar intoxicaciones, quemaduras o reacciones alérgicas.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Usa siempre el EPP adecuado según la ficha de seguridad (guantes, gafas, mascarilla, etc.).</li>
+      <li>No mezcles productos ni los transfieras a envases no rotulados.</li>
+      <li>Evita la inhalación directa y ventila adecuadamente el lugar de trabajo.</li>
+      <li>Lávate las manos después de cada manipulación, incluso si usaste guantes.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>⚙️ Riesgos mecánicos</summary>
+    <p>Partes móviles, herramientas eléctricas o maquinaria pueden causar atrapamientos, cortes o golpes.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Evita intervenir equipos en movimiento o sin bloqueo de energía (LOTO).</li>
+      <li>Utiliza guantes anticorte, gafas y elementos de protección según tarea.</li>
+      <li>Mantente alerta a zonas de paso de maquinaria o carga suspendida.</li>
+      <li>No uses joyas, relojes o ropa suelta que pueda engancharse.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🦠 Riesgos biológicos</summary>
+    <p>Presencia de insectos o vectores transmisores de enfermedades (mosquitos, zancudos, garrapatas). Riesgo mayor en zonas rurales, húmedas o tropicales.</p>
+    <p><strong>Importante:</strong> este riesgo aplica especialmente en proyectos ubicados en climas cálidos o selváticos.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Usa ropa de manga larga y botas altas.</li>
+      <li>Aplica repelente autorizado por el área HSEQ.</li>
+      <li>Evita acumular aguas estancadas y mantén áreas limpias.</li>
+      <li>Reporta cualquier síntoma de fiebre, sarpullido o picaduras anormales.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🔥 Áreas clasificadas</summary>
+    <p>Presencia de gases inflamables o atmósferas explosivas (por ejemplo, en estaciones de compresión).</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>No ingreses sin autorización ni sin monitoreo de atmósfera explosiva.</li>
+      <li>Utiliza herramientas a prueba de chispas y EPP antiestático cuando aplique.</li>
+      <li>No utilices celulares ni cámaras en zonas señalizadas.</li>
+      <li>Sigue el permiso de trabajo autorizado para cada ingreso.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🐍 Riesgo ofídico</summary>
+    <p>Presencia de serpientes venenosas en zonas rurales, vegetación cerrada o áreas cálidas. Aplica especialmente para proyectos en llanura, costa y selva.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Usa botas pantaneras y ropa que cubra las piernas.</li>
+      <li>Camina solo por senderos autorizados y evita mover piedras o troncos con la mano.</li>
+      <li>Ilumina tu ruta si trabajas en la noche o al amanecer.</li>
+      <li>Ante mordedura, mantén la calma, inmoviliza y acude de inmediato a un centro médico.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🌡️ Altas temperaturas y presiones</summary>
+    <p>Riesgo de quemaduras por contacto con equipos calientes (sistemas de vapores, motores, tuberías presurizadas).</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Usa guantes térmicos y prendas ignífugas cuando aplique.</li>
+      <li>Identifica etiquetas de advertencia y mantén distancia de válvulas o salidas de vapor.</li>
+      <li>Evita acciones impulsivas; verifica presión antes de intervenir sistemas.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🤕 Riesgo ergonómico</summary>
+    <p>Movimientos repetitivos, manipulación manual de cargas, posturas inadecuadas o trabajos prolongados sin descanso.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Dobla las rodillas y mantén la espalda recta al levantar peso.</li>
+      <li>Solicita apoyo o utiliza ayudas mecánicas para cargas mayores a 25 kg.</li>
+      <li>Haz pausas activas, estira brazos, cuello y espalda.</li>
+      <li>Alterna tareas que exijan esfuerzo físico repetido.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>⛈️ Tormentas eléctricas</summary>
+    <p>Riesgo de descargas si se trabaja al aire libre durante tormentas.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Suspende actividades a cielo abierto si hay relámpagos.</li>
+      <li>No permanezcas bajo árboles ni estructuras metálicas.</li>
+      <li>Refúgiate en una edificación o vehículo cerrado.</li>
+    </ul>
+  </details>
+<details>
+  <summary>🔊 Ruido y vibraciones</summary>
+  <p>Exposición a niveles altos de ruido por maquinaria, compresores, válvulas en descarga, herramientas neumáticas, entre otros. También pueden presentarse vibraciones prolongadas por uso de ciertos equipos o vehículos.</p>
+  <p><strong>Medidas preventivas:</strong></p>
+  <ul>
+    <li>Usa protección auditiva (tapones o protectores tipo copa) según la tarea y la señalización del área.</li>
+    <li>Evita permanecer cerca de fuentes de ruido sin necesidad operativa.</li>
+    <li>Verifica que la maquinaria cuente con mantenimientos preventivos y soportes antivibración.</li>
+    <li>Alterna tareas para evitar exposiciones prolongadas a vibraciones o ruidos intensos.</li>
+    <li>Reporta cualquier síntoma auditivo como zumbidos o pérdida parcial de audición.</li>
+  </ul>
+</details>
+<details>
+  <summary>🧪 Exposición a BTX (Benceno, Tolueno, Xileno)</summary>
+  <p>Estos compuestos orgánicos volátiles están presentes en combustibles, solventes y procesos con hidrocarburos. La exposición crónica o aguda puede generar efectos en el sistema nervioso, piel, ojos y vías respiratorias.</p>
+  <p><strong>Medidas preventivas:</strong></p>
+  <ul>
+    <li>Usa siempre el EPP adecuado: guantes de nitrilo, gafas de seguridad y protección respiratoria con filtro para vapores orgánicos si hay riesgo de inhalación.</li>
+    <li>Evita el contacto directo con combustibles o productos químicos derivados del petróleo.</li>
+    <li>Realiza las tareas en áreas ventiladas o con sistemas de extracción forzada.</li>
+    <li>No comas, bebas ni fumes en áreas de trabajo con sustancias químicas.</li>
+    <li>Reporta olores intensos, mareos, irritaciones u otros síntomas inmediatamente al área HSEQ.</li>
+  </ul>
+</details>
+  <details>
+    <summary>🚶‍♂️ Riesgos públicos o del entorno</summary>
+    <p>Inseguridad, ingreso de personal no autorizado, condiciones inestables del entorno.</p>
+    <p><strong>Medidas preventivas:</strong></p>
+    <ul>
+      <li>Porta siempre tu carné visible y reporta personas ajenas.</li>
+      <li>No te expongas a zonas no controladas fuera del proyecto.</li>
+      <li>Sigue las instrucciones del personal de seguridad.</li>
+    </ul>
+  </details>
+
+  <p style="margin-top: 20px;">📌 Estos riesgos aplican para todo el personal operativo de la organización o de empresas contratistas. Cualquier riesgo adicional será informado durante tu inducción o al ingreso al sitio de trabajo.</p>
+</section>
+
+  <section data-rol="operativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>2. CONOCE NUESTRAS REGLAS DE ORO</h2>
+
+  <div style="font-family: 'Segoe UI', sans-serif; background-color: white; color: #002b45; font-size: 10.5px; padding: 0.5rem;">
+    <div style="text-align: center; margin-bottom: 20px;">
+      <img src="https://i.postimg.cc/bNZgDYD9/Copia-de-Logo-147-MPX.png" alt="Logo HSEQ" style="height: 50px; vertical-align: middle;">
+      <img src="https://i.postimg.cc/fRBGStH9/diez.png" alt="Escudo 10" style="height: 45px; vertical-align: middle;">
+      <span style="font-size: 20px; font-weight: bold; color: #00426c; vertical-align: middle; margin-left: 10px;">Reglas de Oro – Compromiso con la Vida</span>
+    </div>
+
+    <p style="text-align:center; font-size: 13px; margin-bottom: 30px;">
+      Estas reglas salvan vidas. Son de cumplimiento obligatorio para todo el personal, contratistas y visitantes. Si alguna condición no es segura, tienes el derecho y deber de detener la tarea. ¡Nada justifica un accidente!
+    </p>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px;">
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 1">
+        <h4>1️⃣ Antes de empezar, revisa y planifica</h4>
+        <ul>
+          <li>Obtén el permiso de trabajo correspondiente.</li>
+          <li>Realiza el ATS con tu equipo, incluso si la tarea parece rutinaria.</li>
+          <li>Verifica que exista procedimiento PON y anexos aplicables.</li>
+        </ul>
+      </div>
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 2">
+        <h4>2️⃣ Aísla bien las energías peligrosas</h4>
+        <ul>
+          <li>Bloquea, etiqueta y aísla todas las fuentes antes de intervenir.</li>
+          <li>Incluye energía eléctrica, térmica, neumática o mecánica.</li>
+          <li>Nunca retires bloqueos sin autorización.</li>
+        </ul>
+      </div>
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 3">
+        <h4>3️⃣ Cuidado con trabajos en caliente</h4>
+        <ul>
+          <li>Requieren permiso especial y monitoreo de gases.</li>
+          <li>Debe haber extintores a la mano.</li>
+          <li>Retira materiales inflamables del entorno.</li>
+        </ul>
+      </div>
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 4">
+        <h4>4️⃣ Con cargas, no te la juegues</h4>
+        <ul>
+          <li>Inspecciona ganchos, eslingas y condiciones de la carga.</li>
+          <li>No te ubiques nunca bajo cargas suspendidas.</li>
+          <li>Coordina con señales claras con el operador.</li>
+        </ul>
+      </div>
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 5">
+        <h4>5️⃣ Protégete al trabajar en altura</h4>
+        <ul>
+          <li>Usa arnés con línea de vida certificada.</li>
+          <li>Revisa tu equipo antes de cada uso.</li>
+          <li>Sujeta herramientas y materiales.</li>
+        </ul>
+      </div>
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 6">
+        <h4>6️⃣ Conduce con responsabilidad</h4>
+        <ul>
+          <li>Siempre usa el cinturón de seguridad.</li>
+          <li>No uses celular mientras conduces.</li>
+          <li>Respeta las señales y límites de velocidad.</li>
+        </ul>
+      </div>
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 7">
+        <h4>7️⃣ Usa siempre tu EPP</h4>
+        <ul>
+          <li>Selecciona el adecuado según la actividad.</li>
+          <li>Asegúrate que esté limpio y en buen estado.</li>
+          <li>Úsalo siempre, incluso si la tarea es corta.</li>
+        </ul>
+      </div>
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 8">
+        <h4>8️⃣ Maneja correctamente sustancias peligrosas</h4>
+        <ul>
+          <li>Consulta la ficha de datos de seguridad (FDS) antes de manipularlas.</li>
+          <li>Etiqueta y almacena según los protocolos.</li>
+          <li>Actúa de inmediato ante derrames y notifícalo.</li>
+        </ul>
+      </div>
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 9">
+        <h4>9️⃣ No toques equipos eléctricos sin permiso</h4>
+        <ul>
+          <li>Solo personal autorizado puede intervenirlos.</li>
+          <li>Verifica que estén aislados y etiquetados.</li>
+          <li>Usa herramientas aisladas certificadas.</li>
+        </ul>
+      </div>
+
+      <div style="background-color: #f4f8fb; border-left: 5px solid #00426c; padding: 10px; border-radius: 8px;" aria-label="Regla 10">
+        <h4>🔟 Si no es seguro, detente</h4>
+        <ul>
+          <li>Tienes derecho a detener cualquier actividad insegura.</li>
+          <li>Informa de inmediato a tu supervisor o al área HSEQ.</li>
+          <li>No reinicies hasta que el riesgo esté controlado.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="text-align: right; font-size: 0.75em; color: #888; margin-top: 20px;">
+      Versión 1.0 – Reglas de Oro HSEQ | Actualizado: mayo 2025
+    </div>
+  </div>
+</section>
+
+  <section data-rol="operativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>3. PERMISOS DE TRABAJO Y ATS</h2>
+
+  <p>📝 En PBI, todo trabajo que no sea rutinario o que involucre riesgos debe contar con autorización previa mediante un <strong>Permiso de Trabajo</strong> y un <strong>Análisis de Trabajo Seguro (ATS)</strong>. Esta exigencia aplica tanto para trabajadores directos como para personal en misión (temporal).</p>
+
+  <div class="card">
+    <ul>
+      <li><strong>Permiso de trabajo:</strong> Documento que autoriza formalmente una tarea, validando las condiciones seguras para su ejecución.</li>
+      <li><strong>ATS:</strong> Herramienta en la que se identifican peligros, se analizan riesgos y se definen controles específicos para la actividad.</li>
+      <li>Debe ser diligenciado por quien ejecuta el trabajo, revisado por su supervisor directo y validado por HSEQ cuando aplique.</li>
+      <li>Incluye revisión del entorno, condiciones climáticas, estado de herramientas, uso de EPP, autorizaciones y equipos involucrados.</li>
+    </ul>
+  </div>
+
+  <p>📌 Ningún trabajador, sin importar su tipo de vinculación, debe realizar tareas de riesgo sin contar con el permiso aprobado y vigente. Esta medida protege tu vida y la de tus compañeros.</p>
+</section>
+
+  <section data-rol="operativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>4. TAREAS DE ALTO RIESGO</h2>
+
+  <p>⚠️ Las siguientes actividades son consideradas <strong>tareas de alto riesgo</strong> por su potencial de generar incidentes graves o fatales si no se gestionan adecuadamente. Todo trabajador directo o de empresa temporal que vaya a participar en ellas debe cumplir los protocolos definidos.</p>
+
+  <p><strong>Requisitos mínimos antes de ejecutar:</strong></p>
+  <ul>
+    <li>Permiso de trabajo aprobado y vigente.</li>
+    <li>ATS completo, firmado y socializado con los participantes.</li>
+    <li>Capacitación específica para la tarea.</li>
+    <li>Supervisión durante toda la ejecución.</li>
+  </ul>
+
+  <details>
+    <summary>🧗‍♂️ Trabajo en alturas</summary>
+    <p>Desde los 2 metros de altura, se considera actividad de riesgo. Aplica en escaleras, plataformas, estructuras, entre otras.</p>
+    <ul>
+      <li>Curso vigente según nivel de responsabilidad.</li>
+      <li>Uso de arnés, línea de vida y sistemas anticaídas certificados.</li>
+      <li>Inspección del área y autorización formal mediante permiso.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🚧 Espacios confinados</summary>
+    <p>Aplica en tanques, ductos, fosas, cámaras o estructuras con ventilación limitada.</p>
+    <ul>
+      <li>Evaluación previa por personal competente.</li>
+      <li>Medición de gases y ventilación mecánica.</li>
+      <li>Presencia de vigía externo y plan de rescate activo.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🔥 Trabajos en caliente</summary>
+    <p>Soldadura, corte, esmerilado u otras tareas que generen calor o chispas.</p>
+    <ul>
+      <li>Permiso autorizado y revisión de atmósfera si aplica.</li>
+      <li>Extintores y protección contra incendios al alcance.</li>
+      <li>Retiro de materiales inflamables y vigilancia continua.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>⚡ Energías peligrosas (LOTO)</summary>
+    <p>Aplica cuando hay intervención de fuentes eléctricas, mecánicas, hidráulicas, neumáticas u otras.</p>
+    <ul>
+      <li>Identificación de fuentes energizadas.</li>
+      <li>Aplicación efectiva del sistema LOTO (bloqueo-etiquetado).</li>
+      <li>Verificación del aislamiento antes de comenzar.</li>
+    </ul>
+  </details>
+
+  <details>
+    <summary>🧪 Exposición a sustancias químicas</summary>
+    <p>Incluso actividades cotidianas como limpieza pueden implicar exposición a agentes químicos o biológicos.</p>
+    <ul>
+      <li>Revisión de la ficha de datos de seguridad (FDS).</li>
+      <li>Uso del EPP adecuado (guantes, gafas, protección respiratoria).</li>
+      <li>Almacenamiento, transporte y disposición correcta.</li>
+    </ul>
+  </details>
+<details>
+  <summary>🏗️ Izaje de cargas</summary>
+  <p>El izaje de cargas implica el uso de grúas, polipastos, montacargas, plumas o cualquier sistema de elevación. Es una tarea de alto riesgo que requiere planeación detallada, inspecciones previas y ejecución bajo supervisión directa.</p>
+
+  <ul>
+    <li>El operador del equipo debe estar certificado y autorizado.</li>
+    <li>Se deben realizar inspecciones previas a eslingas, ganchos, grilletes y puntos de anclaje.</li>
+    <li>Debe elaborarse un plan de izaje o procedimiento escrito si la carga es compleja o el entorno es restringido.</li>
+    <li>Solo puede participar personal capacitado y con función clara asignada (señalero, operador, supervisor).</li>
+    <li>Está prohibido ubicarse bajo la carga suspendida en cualquier circunstancia.</li>
+    <li>La zona de izaje debe estar demarcada y libre de obstáculos o tránsito de personas.</li>
+    <li>Durante el izaje, debe mantenerse comunicación visual o radial entre señalero y operador.</li>
+    <li>En caso de condiciones climáticas adversas (viento fuerte, tormentas), el izaje debe suspenderse.</li>
+  </ul>
+
+  <p><strong>Normativa aplicable:</strong> NTC 2769, ISO 23813, ISO 9927, Decreto 1072 de 2015.</p>
+</details>
+
+  <p>📌 También se consideran tareas de alto riesgo: excavaciones profundas, ingreso a zonas clasificadas, operación de equipos móviles, riesgos ofídicos en zonas rurales, entre otros. Ante cualquier duda, consulta al área HSEQ o a tu supervisor.</p>
+</section>
+<section data-rol="operativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>5. SEGURIDAD VIAL EN CAMPO Y TRAYECTOS LABORALES</h2>
+
+  <p>🚘 La seguridad vial es parte integral de la cultura preventiva de PBI. Ya sea conduciendo, como pasajero o peatón, dentro del proyecto o durante traslados externos, cada trabajador es responsable de promover comportamientos seguros.</p>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 16px; margin-top: 20px;">
+
+    <div style="background-color: #f4f8fb; padding: 12px; border-left: 4px solid #00426c; border-radius: 6px;">
+      <h4>📵 Sin distracciones</h4>
+      <p>No uses celular mientras conduces ni camines con audífonos en zonas operativas o vías urbanas.</p>
+    </div>
+
+    <div style="background-color: #f4f8fb; padding: 12px; border-left: 4px solid #00426c; border-radius: 6px;">
+      <h4>⏱ Respeta los límites</h4>
+      <p>Máximo 10 km/h dentro del proyecto. En vías externas, respeta los límites y condiciones del entorno.</p>
+    </div>
+
+    <div style="background-color: #f4f8fb; padding: 12px; border-left: 4px solid #00426c; border-radius: 6px;">
+      <h4>💤 Fatiga: enemigo silencioso</h4>
+      <p>No conduzcas si estás agotado. La somnolencia disminuye reflejos y aumenta el riesgo de accidente.</p>
+    </div>
+
+    <div style="background-color: #f4f8fb; padding: 12px; border-left: 4px solid #00426c; border-radius: 6px;">
+      <h4>🍺 Tolerancia cero al alcohol y drogas</h4>
+      <p>Está prohibido conducir bajo efectos de alcohol o sustancias psicoactivas. ¡Protégete y protege a los demás!</p>
+    </div>
+
+    <div style="background-color: #f4f8fb; padding: 12px; border-left: 4px solid #00426c; border-radius: 6px;">
+      <h4>✅ Usa siempre el cinturón</h4>
+      <p>Es obligatorio en cualquier trayecto, incluso en recorridos internos o como pasajero.</p>
+    </div>
+
+    <div style="background-color: #f4f8fb; padding: 12px; border-left: 4px solid #00426c; border-radius: 6px;">
+      <h4>🧭 Reporta tus desplazamientos</h4>
+      <p>Todo traslado laboral debe registrarse en los medios definidos por PBI (formulario, app o bitácora de campo). Esto garantiza trazabilidad y respuesta ante emergencias.</p>
+    </div>
+
+    <div style="background-color: #f4f8fb; padding: 12px; border-left: 4px solid #00426c; border-radius: 6px;">
+      <h4>🚐 Sé veedor como pasajero</h4>
+      <p>Si usas transporte contratado, asegúrate que el conductor respete normas viales. Si detectas anomalías, repórtalas al área HSEQ o a tu jefe inmediato.</p>
+    </div>
+
+    <div style="background-color: #f4f8fb; padding: 12px; border-left: 4px solid #00426c; border-radius: 6px;">
+      <h4>🛑 Conduce a la defensiva</h4>
+      <p>Anticipa riesgos, mantén distancia segura y sé prudente al interactuar con peatones, motos o vehículos pesados.</p>
+    </div>
+
+  </div>
+
+  <p style="margin-top: 20px;">📌 La seguridad vial no termina al finalizar la jornada. Tus decisiones al salir del turno también hacen parte de tu compromiso con la vida. Descansa bien, planea tus desplazamientos y actúa con conciencia vial.</p>
+</section>
+<section data-rol="operativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>6. PLAN DE EMERGENCIAS EN PROYECTOS OPERATIVOS</h2>
+
+  <p>🚨 En nuestras operaciones existe riesgo de eventos como fugas de gas, incendios, explosiones, derrames de sustancias químicas o fenómenos naturales. Por eso, cada instalación cuenta con un <strong>Plan de Emergencias</strong> adaptado a sus riesgos específicos.</p>
+
+  <p>🛑 Conocerlo y actuar adecuadamente puede salvar vidas. Ten presente:</p>
+
+ <ul>
+  <li>📢 Conocer el funcionamiento del sistema de alarma sonora (sirena, megáfono o radio) para alertar emergencias.</li>
+  <li>🚪 Identificar las rutas de evacuación, asegurándose de que estén señalizadas y libres de obstrucciones.</li>
+  <li>📍 Reconocer el punto de encuentro asignado por zona, con su señalización e instrucciones visibles.</li>
+  <li>🧯 Identificar la ubicación y uso básico de los equipos de emergencia: extintores, kits de derrame, botiquines y radios.</li>
+  <li>👷 Conocer las brigadas de emergencia asignadas, su función y la manera de seguir sus instrucciones en caso de evento crítico.</li>
+</ul>
+
+  <p><strong>Tipos de emergencia a los que debes estar preparado:</strong></p>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; margin-top: 12px;">
+    <div style="background-color:#f4f8fb; padding: 10px; border-left: 4px solid #c0392b; border-radius: 6px;">
+      <h4>🔥 Incendio</h4>
+      <p>Activa la alarma, evacúa y notifica al brigadista. Nunca intentes apagarlo sin entrenamiento.</p>
+    </div>
+    <div style="background-color:#f4f8fb; padding: 10px; border-left: 4px solid #e67e22; border-radius: 6px;">
+      <h4>💨 Fuga de gas</h4>
+      <p>Evita fuentes de ignición. No uses celulares. Aléjate y activa el protocolo de evacuación.</p>
+    </div>
+    <div style="background-color:#f4f8fb; padding: 10px; border-left: 4px solid #16a085; border-radius: 6px;">
+      <h4>☢️ Derrame químico</h4>
+      <p>No entres en contacto con la sustancia. Informa de inmediato. Solo personal entrenado podrá contenerlo.</p>
+    </div>
+    <div style="background-color:#f4f8fb; padding: 10px; border-left: 4px solid #2980b9; border-radius: 6px;">
+      <h4>🌎 Sismo</h4>
+      <p>Agáchate, cúbrete y sujétate. Evacúa solo cuando termine el movimiento y sigue la ruta establecida.</p>
+    </div>
+    <div style="background-color:#f4f8fb; padding: 10px; border-left: 4px solid #8e44ad; border-radius: 6px;">
+      <h4>💥 Explosión</h4>
+      <p>Cúbrete, evacúa si estás en condiciones seguras, y apoya al personal herido solo si no hay riesgo adicional.</p>
+    </div>
+    <div style="background-color:#f4f8fb; padding: 10px; border-left: 4px solid #34495e; border-radius: 6px;">
+      <h4>🐍 Riesgo biológico u ofídico</h4>
+      <p>Aléjate sin alterar al animal. Reporta de inmediato. El equipo médico y brigadas están capacitados para actuar.</p>
+    </div>
+  </div>
+
+  <p style="margin-top: 20px;"><strong>¿Qué debes hacer en cualquier emergencia?</strong></p>
+  <ul>
+    <li>✅ Mantén la calma. Evalúa rápidamente la situación.</li>
+    <li>✅ Activa el sistema de alarma o comunica por radio.</li>
+    <li>✅ Evacúa siguiendo la ruta establecida y sin correr.</li>
+    <li>✅ Acude al punto de encuentro más cercano.</li>
+    <li>✅ Reporta si observas compañeros lesionados o atrapados.</li>
+    <li>✅ No regreses a la zona afectada sin autorización.</li>
+  </ul>
+
+  <p style="margin-top: 10px;">📌 El conocimiento del plan de emergencias es obligatorio. Si tienes dudas, solicita inducción específica en campo o consulta al líder HSEQ del proyecto.</p>
+</section>
+<section data-rol="operativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>🧯 Tipos de Extintores que podrías encontrar en la operación</h2>
+
+  <p>En los proyectos de campo, podrías presenciar un conato de incendio o situación de riesgo. Conocer los tipos de extintores disponibles es esencial tanto en tu inducción como durante tus labores cotidianas.</p>
+  <p><strong>Recuerda:</strong> No intentes usarlos si no estás capacitado. Prioriza tu seguridad, reporta el incidente y notifica a la brigada.</p>
+
+  <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;">
+
+    <!-- Extintor ABC -->
+    <div style="flex: 1 1 280px; background: #fff9e6; border-left: 6px solid #f9c922; border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <h4>🟡 Extintor ABC</h4>
+      <p><strong>Clase:</strong> A, B y C</p>
+      <ul>
+        <li><span style="color: green;">✔</span> Papel, madera, aceites, equipos eléctricos.</li>
+        <li><span style="color: green;">✔</span> Extintor versátil de uso común.</li>
+        <li><span style="color: red;">❌</span> No usar en áreas confinadas sin ventilación.</li>
+      </ul>
+      <img src="https://i.postimg.cc/Bny0bGmN/EXTINTOR-TIPO-ABC.jpg" alt="Extintor ABC"
+           style="height: 120px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); margin: 10px auto; display: block;">
+    </div>
+
+    <!-- Extintor CO2 -->
+    <div style="flex: 1 1 280px; background: #ffeaea; border-left: 6px solid #e60000; border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <h4>🔴 Extintor CO₂</h4>
+      <p><strong>Clase:</strong> C</p>
+      <ul>
+        <li><span style="color: green;">✔</span> Ideal para tableros y redes eléctricas.</li>
+        <li><span style="color: green;">✔</span> No deja residuos.</li>
+        <li><span style="color: red;">❌</span> No usar en espacios sin ventilación.</li>
+      </ul>
+      <img src="https://i.postimg.cc/V6fDcJXh/TIPO-CO2.png" alt="Extintor CO2"
+           style="height: 120px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); margin: 10px auto; display: block;">
+    </div>
+
+    <!-- Extintor de Agua -->
+    <div style="flex: 1 1 280px; background: #e9fef0; border-left: 6px solid #27ae60; border-radius: 10px; padding: 15px; max-width: 300px; box-shadow: 0 2px 6px rgba(0,0,0,0.1);">
+      <h4>🟢 Extintor de Agua</h4>
+      <p><strong>Clase:</strong> A</p>
+      <ul>
+        <li><span style="color: green;">✔</span> Combustibles sólidos: madera, papel, tela.</li>
+        <li><span style="color: green;">✔</span> Reduce temperatura del material.</li>
+        <li><span style="color: red;">❌</span> No usar en fuegos eléctricos ni líquidos inflamables.</li>
+      </ul>
+      <img src="https://i.postimg.cc/28HnJH5n/Extintor-tipo-A.png" alt="Extintor Agua"
+           style="height: 120px; object-fit: contain; background: #fff; padding: 6px; border-radius: 8px; box-shadow: 0 1px 5px rgba(0,0,0,0.1); margin: 10px auto; display: block;">
+    </div>
+
+  </div>
+
+  <p style="margin-top: 20px; font-size: 14px; color: #666;">
+    📌 Revisa siempre la etiqueta del extintor: indica su clase y uso. Si observas un extintor descargado o dañado, repórtalo de inmediato. En PBI, todos somos corresponsables de mantener los equipos en condiciones seguras.
+  </p>
+</section>
+  <section data-rol="operativo">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>🛑7.SEGURIDAD DE PROCESOS</h2>
+  <p>En nuestras operaciones industriales, además de cuidar tu seguridad personal, implementamos medidas de <strong>Seguridad de Procesos</strong> para prevenir accidentes mayores como explosiones, fugas, incendios o liberaciones de sustancias peligrosas.</p>
+
+  <div class="card-grid" style="margin-top: 20px;">
+
+    <div class="card">
+      <h3>🎯 Objetivo</h3>
+      <p>Evitar pérdidas humanas, ambientales y materiales causadas por fallas en sistemas industriales. La prevención es responsabilidad de todos.</p>
+    </div>
+
+    <div class="card">
+      <h3>🛡️ Controles Críticos</h3>
+      <ul>
+        <li>Presión y temperatura bajo control</li>
+        <li>Alarmas, válvulas de seguridad y sistemas de paro automático</li>
+        <li>Inspección e integridad de equipos, tuberías y conexiones</li>
+        <li>Control de fuentes de ignición en áreas clasificadas</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>👷 Tu rol en campo</h3>
+      <ul>
+        <li>Reporta inmediatamente cualquier fuga, ruido anormal o vibración</li>
+        <li>No intervengas válvulas o sistemas sin autorización</li>
+        <li>Respeta los procedimientos operativos y permisos de trabajo</li>
+        <li>Verifica las condiciones antes de realizar tareas de alto riesgo</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <p style="margin-top: 25px;"><strong>🔁 Recuerda:</strong> Un pequeño descuido en seguridad de procesos puede tener grandes consecuencias. Aplica los controles críticos, sigue los procedimientos y actúa con conciencia preventiva en todo momento.</p>
+</section>
+
+<section id="quiz-capitulo2" class="quiz-section">
+  <h2>🧠 Quiz de Seguridad y Cultura Preventiva</h2>
+  <p style="text-align: center; max-width: 700px; margin: 0 auto 25px;">
+    Responde correctamente para avanzar al <strong>Capítulo III – Gestión Ambiental</strong>.
+  </p>
+
+  <form id="quizSeguridadCultura">
+    <div class="quiz-pregunta" style="margin-bottom: 25px;">
+      <p><strong>1. ¿Cuál es el primer paso ante una situación de emergencia?</strong></p>
+      <label><input type="radio" name="q1" value="a"> Esperar instrucciones sin hacer nada.</label><br>
+      <label><input type="radio" name="q1" value="b"> Correr hacia la salida más cercana.</label><br>
+      <label><input type="radio" name="q1" value="c"> Mantener la calma y seguir el plan de emergencia establecido.</label>
+    </div>
+
+    <div class="quiz-pregunta" style="margin-bottom: 25px;">
+      <p><strong>2. ¿Qué actitud refleja una cultura de seguridad?</strong></p>
+      <label><input type="radio" name="q2" value="a"> Cumplir normas solo cuando hay supervisión.</label><br>
+      <label><input type="radio" name="q2" value="b"> Reportar condiciones inseguras y actuar con responsabilidad.</label><br>
+      <label><input type="radio" name="q2" value="c"> Esperar a que otro se encargue de los riesgos.</label>
+    </div>
+
+    <div class="quiz-pregunta" style="margin-bottom: 25px;">
+      <p><strong>3. ¿Cuál de los siguientes es un compromiso dentro de la Política HSEQ?</strong></p>
+      <label><input type="radio" name="q3" value="a"> Proteger únicamente los activos físicos de la empresa.</label><br>
+      <label><input type="radio" name="q3" value="b"> Garantizar la seguridad, la salud, el ambiente y la calidad.</label><br>
+      <label><input type="radio" name="q3" value="c"> Priorizar la productividad sobre la seguridad.</label>
+    </div>
+
+    <div class="quiz-pregunta" style="margin-bottom: 25px;">
+      <p><strong>4. ¿Qué debe hacer una persona si observa un acto inseguro?</strong></p>
+      <label><input type="radio" name="q4" value="a"> Ignorarlo si no le afecta directamente.</label><br>
+      <label><input type="radio" name="q4" value="b"> Reportarlo o intervenir con respeto para prevenir incidentes.</label><br>
+      <label><input type="radio" name="q4" value="c"> Esperar a que lo resuelva el jefe inmediato.</label>
+    </div>
+
+    <div class="quiz-pregunta" style="margin-bottom: 30px;">
+      <p><strong>5. ¿A quiénes aplica la Política HSEQ de la organización?</strong></p>
+      <label><input type="radio" name="q5" value="a"> Solo a trabajadores del área operativa.</label><br>
+      <label><input type="radio" name="q5" value="b"> A todos los niveles y roles dentro de la organización.</label><br>
+      <label><input type="radio" name="q5" value="c"> Solo a contratistas temporales.</label>
+    </div>
+
+    <button type="button" onclick="validarTriviaCapitulo2()" style="margin-top: 20px;">📤 Enviar respuestas</button>
+    <p id="resultadoQuizCap2" style="margin-top: 20px; font-weight: bold;"></p>
+  </form>
+</section>
+<section id="gestion-ambiental">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/7Zs3M6q5/070c051b-d00b-4375-87f0-c9d6899f8be6.png" alt="Gestión ambiental PBI">
+  </div>
+
+  <h2>🌍 CAPÍTULO III – GESTIÓN AMBIENTAL</h2>
+
+  <p>En PBI estamos comprometidos con la protección del medio ambiente. Nuestro Sistema de Gestión Ambiental se basa en la norma <strong>ISO 14001</strong> y el cumplimiento del <strong>marco legal colombiano</strong>, buscando:</p>
+  
+  <ul>
+    <li>✅ Prevenir la contaminación en todas nuestras actividades.</li>
+    <li>✅ Usar racionalmente los recursos naturales.</li>
+    <li>✅ Cumplir con la legislación ambiental vigente.</li>
+    <li>✅ Reducir, reutilizar y reciclar residuos generados.</li>
+    <li>✅ Promover la participación activa del personal en prácticas sostenibles.</li>
+  </ul>
+
+  <p>🌱 La gestión ambiental aplica a todos los trabajadores, visitantes y contratistas, en oficinas y en campo.</p>
+
+  <p>🔎 Cada actividad tiene un impacto ambiental potencial: consumo de energía, generación de residuos, emisiones, vertimientos o uso de químicos. Nuestro deber es controlarlos y prevenir afectaciones al entorno.</p>
+
+  <p>📜 Algunas normas clave:</p>
+  <ul>
+    <li>📌 <strong>Ley 99 de 1993</strong>: Crea el Ministerio de Ambiente y el SINA.</li>
+    <li>📌 <strong>Decreto 1076 de 2015</strong>: Compila normas ambientales sectoriales.</li>
+    <li>📌 <strong>Resolución 2184 de 2019</strong>: Establece el código de colores para separación de residuos.</li>
+    <li>📌 <strong>ISO 14001:2015</strong>: Norma internacional que guía nuestro sistema ambiental.</li>
+  </ul>
+
+  <p>♻️ <strong>Tu compromiso ambiental es clave</strong>: separa residuos, evita desperdicios, reporta cualquier afectación ambiental, y aplica buenas prácticas en tus tareas diarias.</p>
+</section>
+
+<section id="capitulo3-residuos" data-rol style="display: none;">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>♻️ 1.GESTIÓN DE RESIDUOS </h2>
+
+  <p>En PBI adoptamos principios de sostenibilidad en todas nuestras actividades, tanto en entornos operativos como administrativos. Estas son nuestras <strong>reglas básicas de separación en la fuente</strong>:</p>
+
+  <div class="card-grid">
+    <div class="card">
+      <h3>🗑️ Contenedor Blanco</h3>
+      <p>Deposita <strong>residuos aprovechables</strong> como:</p>
+      <ul>
+        <li>Papel y cartón</li>
+        <li>Plástico</li>
+        <li>Vidrio</li>
+        <li>Metales</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🌿 Contenedor Verde</h3>
+      <p>Deposita <strong>residuos orgánicos</strong> como:</p>
+      <ul>
+        <li>Restos de comida</li>
+        <li>Residuos de jardinería</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🖤 Contenedor Negro</h3>
+      <p>Deposita <strong>residuos no aprovechables</strong> como:</p>
+      <ul>
+        <li>Papel higiénico</li>
+        <li>Servilletas</li>
+        <li>Icopor</li>
+        <li>Residuos contaminados</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="imagen-seccion">
+    <img src="https://i.postimg.cc/wj2y8y8v/Canecas-residuos.png" alt="Separación en la fuente - Canecas">
+  </div>
+
+  <div class="hseq-note">
+    <p>🚨 <strong>Evita mezclar residuos:</strong> Usa correctamente los <strong>puntos ecológicos</strong> disponibles en oficinas y frentes de trabajo.</p>
+    <p>📘 Esta práctica está alineada con la <strong>Resolución 2184 de 2019</strong> y forma parte de nuestro compromiso ambiental.</p>
+    <p>🌍 <strong>Cada acción cuenta:</strong> tu participación es clave para reducir el impacto ambiental de nuestras operaciones.</p>
+  </div>
+</section>
+
+<section id="cap3-seccion3">
+  <div class="seccion-contenido">
+    <h2>🌿2.PROGRAMAS DE GESTIÓN AMBIENTAL </h2>
+    <p>
+      En cumplimiento de la <strong>norma ISO 14001</strong> y el <strong>marco legal ambiental colombiano</strong>, contamos con programas orientados a reducir impactos negativos y promover el uso eficiente de los recursos naturales. A continuación, se destacan los programas corporativoes con enfoque ambiental:
+    </p>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <h3>🔌 Uso Racional de Energía</h3>
+        <p>Fomenta prácticas de eficiencia energética en todas las operaciones, contribuyendo a la reducción de emisiones y costos.</p>
+        <div class="ley">PRG-HSEQ-06</div>
+      </div>
+
+      <div class="card">
+        <h3>🚰 Uso Eficiente del Agua</h3>
+        <p>Promueve la conservación del recurso hídrico mediante buenas prácticas y control de consumos.</p>
+        <div class="ley">PRG-HSEQ-07</div>
+      </div>
+
+      <div class="card">
+        <h3>🗑️ Manejo de Residuos Sólidos</h3>
+        <p>Establece lineamientos para la correcta segregación, recolección y disposición de residuos conforme a la Resolución 2184 de 2019.</p>
+        <div class="ley">PRG-HSEQ-08</div>
+      </div>
+
+      <div class="card">
+        <h3>🧼 Saneamiento Básico Ambiental</h3>
+        <p>Busca garantizar condiciones higiénico-sanitarias en las instalaciones, previniendo riesgos ambientales y para la salud.</p>
+        <div class="ley">PRG-HSEQ-12</div>
+      </div>
+
+      <div class="card">
+        <h3>🌫️ Gestión de la Calidad del Aire</h3>
+        <p>Incluye estrategias para el monitoreo y control de emisiones en fuentes fijas y móviles, según normativa nacional.</p>
+        <div class="ley">PRG-HSEQ-19</div>
+      </div>
+
+      <div class="card">
+        <h3>📚 Educación Ambiental</h3>
+        <p>Fortalece la cultura ambiental mediante campañas, capacitaciones y actividades de concienciación interna y externa.</p>
+        <div class="ley">PRG-HSEQ-20</div>
+      </div>
+
+      <div class="card">
+        <h3>⚖️ Cumplimiento Legal Ambiental</h3>
+        <p>Monitorea el cumplimiento de permisos, licencias y demás obligaciones legales en materia ambiental.</p>
+        <div class="ley">PRG-HSEQ-21</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+  <section id="cap3-aspectos-impactos">
+  <div class="seccion-contenido">
+    <h2>🔍 3.¿Qué es un aspecto e impacto ambiental?</h2>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>🌱 Aspecto Ambiental</h3>
+        <p>
+          Es un elemento de las actividades, productos o servicios de una organización que puede interactuar con el ambiente.<br>
+          <strong>Ejemplo:</strong> Consumo de agua, generación de residuos, emisiones atmosféricas.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🌍 Impacto Ambiental</h3>
+        <p>
+          Es cualquier cambio en el ambiente (positivo o negativo) como resultado de un aspecto ambiental.<br>
+          <strong>Ejemplo:</strong> Contaminación del aire, agotamiento de recursos, afectación a la fauna o flora.
+        </p>
+      </div>
+    </div>
+
+    <div class="imagen-seccion">
+      <img src="https://i.postimg.cc/BbdvhDcB/aspecto-impacto-pbi.png" alt="Aspectos e impactos ambientales">
+    </div>
+
+    <div class="hseq-note">
+      <p>La identificación de los impactos ambientales que se generan por las operaciones de la empresa se realiza a partir de los aspectos ambientales. Estos se registran en la <strong>Matriz de Identificación de Aspectos e Impactos Ambientales</strong> con el código <strong>FOR-HSEQ-14</strong>.</p>
+    </div>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <h3>📉 Impactos ambientales asociados</h3>
+        <ul>
+          <li>Agotamiento de recursos naturales</li>
+          <li>Contaminación del agua, aire o suelo</li>
+          <li>Afectación a la fauna y flora</li>
+          <li>Mejoramiento de la calidad de vida (impacto positivo)</li>
+        </ul>
+      </div>
+
+      <div class="card">
+        <h3>🏢 ¿Dónde se generan?</h3>
+        <p>
+          Se generan tanto en los campos de operación como en las oficinas administrativas, y pueden ser controlados mediante acciones preventivas y programas ambientales.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="cap3-seccion4">
+  <div class="seccion-contenido">
+    <h2>🌎 Aspectos e Impactos Ambientales de Nuestras Operaciones</h2>
+    <p>
+      Conforme a la <strong>ISO 14001:2015</strong>, identificamos los <strong>aspectos ambientales</strong> relacionados con nuestras actividades y evaluamos sus <strong>impactos</strong> potenciales sobre el entorno, con el fin de establecer controles y acciones preventivas.
+    </p>
+    <p><strong>Alcance del sistema de gestión ambiental:</strong> operación y mantenimiento de plantas de compresión y tratamiento de gas y sus derivados o conexos, de gasoductos; comercialización de hidrocarburos líquidos y gaseosos; y generación de energía eléctrica como solución aislada.</p>
+
+    <div class="card-grid">
+
+      <div class="card">
+        <h3>💨 Emisión de gases y vapores</h3>
+        <p><strong>Aspecto:</strong> Liberación de compuestos durante la compresión, tratamiento y quema de hidrocarburos.<br><strong>Impacto:</strong> Contaminación atmosférica, efecto invernadero.</p>
+      </div>
+
+      <div class="card">
+        <h3>🛢️ Manejo de residuos peligrosos</h3>
+        <p><strong>Aspecto:</strong> Generación de aceites usados, filtros, trapos contaminados.<br><strong>Impacto:</strong> Riesgo de contaminación del suelo y aguas subterráneas.</p>
+      </div>
+
+      <div class="card">
+        <h3>🔊 Ruido industrial</h3>
+        <p><strong>Aspecto:</strong> Funcionamiento de equipos como compresores y motores.<br><strong>Impacto:</strong> Afectación a la salud de trabajadores y fauna cercana.</p>
+      </div>
+
+      <div class="card">
+        <h3>🔥 Riesgo de incendios o fugas</h3>
+        <p><strong>Aspecto:</strong> Almacenamiento y manejo de combustibles.<br><strong>Impacto:</strong> Contaminación del aire, riesgo de afectación a comunidades y ecosistemas.</p>
+      </div>
+
+      <div class="card">
+        <h3>⚡ Consumo de energía eléctrica</h3>
+        <p><strong>Aspecto:</strong> Uso de generadores, equipos de bombeo y sistemas de control.<br><strong>Impacto:</strong> Agotamiento de recursos y huella de carbono.</p>
+      </div>
+
+      <div class="card">
+        <h3>🚚 Transporte de hidrocarburos</h3>
+        <p><strong>Aspecto:</strong> Traslado por carrotanques o gasoductos.<br><strong>Impacto:</strong> Emisiones por combustión y riesgo de derrames en carretera o campo.</p>
+      </div>
+
+      <div class="card">
+        <h3>🏗️ Intervención del suelo</h3>
+        <p><strong>Aspecto:</strong> Obras civiles para mantenimiento de infraestructura.<br><strong>Impacto:</strong> Alteración del paisaje, compactación del suelo y pérdida de cobertura vegetal.</p>
+      </div>
+
+    </div>
+
+    <div class="hseq-note">
+      <strong>Nota:</strong> Estos aspectos son monitoreados de forma periódica. Aquellos con mayor severidad, frecuencia o probabilidad de ocurrencia son tratados como <strong>aspectos significativos</strong> y gestionados bajo planes y controles específicos.
+    </div>
+  </div>
+</section>
+<section id="capitulo3-tips-sostenibilidad" style="display: none;">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2>🌍3.Consejos para una Cultura Ambiental y de Sostenibilidad</h2>
+  <p>La sostenibilidad es parte de nuestra responsabilidad como organización y como ciudadanos. Estos <strong>tips te ayudarán a cuidar el agua, ahorrar energía y proteger el entorno</strong> desde el trabajo y en tu vida cotidiana:</p>
+
+  <div class="card-grid">
+
+    <div class="card">
+      <h3>💡 Ahorro de Energía</h3>
+      <ul>
+        <li>Apaga luces y equipos al salir de una sala u oficina.</li>
+        <li>Utiliza iluminación natural siempre que sea posible.</li>
+        <li>Desconecta cargadores que no estés usando.</li>
+        <li>En casa, elige electrodomésticos con eficiencia energética (Etiqueta A).</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🚿 Cuidado del Agua</h3>
+      <ul>
+        <li>Cierra bien los grifos después de usarlos.</li>
+        <li>Reporta fugas o goteos en baños y cocinas.</li>
+        <li>Reduce el tiempo en la ducha.</li>
+        <li>Reutiliza el agua para riego o limpieza cuando sea posible.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>🐾 Protección del Medio Ambiente y la Fauna</h3>
+      <ul>
+        <li>No alimentes ni captures animales silvestres.</li>
+        <li>No arrojes residuos en áreas verdes o cuerpos de agua.</li>
+        <li>Respeta hábitats naturales cercanos a las operaciones.</li>
+        <li>Participa en jornadas de reforestación o limpieza.</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h3>♻️ Hábitos Sostenibles en el Día a Día</h3>
+      <ul>
+        <li>Lleva tu propio vaso, botella o termo reutilizable.</li>
+        <li>Evita el uso de plásticos de un solo uso.</li>
+        <li>Imprime solo si es necesario y utiliza papel reciclado.</li>
+        <li>Comparte el transporte o utiliza bicicleta o caminata.</li>
+      </ul>
+    </div>
+    <div class="card">
+  <h3>🌱 Reduce tu Huella de Carbono</h3>
+  <ul>
+    <li>Opta por alimentos locales y de temporada para reducir emisiones por transporte.</li>
+    <li>Evita compras innecesarias y dale una segunda vida a lo que ya tienes.</li>
+    <li>Reduce el uso del vehículo particular: comparte viajes, camina o usa transporte público.</li>
+    <li>Planta árboles o apoya iniciativas de reforestación: ¡son sumideros naturales de carbono!</li>
+  </ul>
+</div>
+
+
+  </div>
+
+  <div class="hseq-note">
+    <p>✅ Cada pequeño cambio suma. En PBI promovemos una cultura ambiental responsable dentro y fuera del entorno laboral. ¡Sé parte del cambio!</p>
+  </div>
+</section>
+
+<section id="quiz-capitulo3" class="quiz-section" style="display: none;">
+  <h2>🌿 Quiz – Gestión Ambiental y Sostenibilidad</h2>
+  <p style="text-align: center; max-width: 700px; margin: 0 auto 25px;">
+    Responde correctamente para completar el <strong>Capítulo III – Gestión Ambiental</strong> y continuar con el cierre de la inducción.
+  </p>
+
+  <form id="quizCapitulo3">
+    <div class="quiz-pregunta" style="margin-bottom: 25px;">
+      <p><strong>1. ¿Cuál es el color del contenedor destinado a residuos aprovechables?</strong></p>
+      <label><input type="radio" name="cq1" value="a"> Blanco </label><br>
+      <label><input type="radio" name="cq1" value="b"> Verde</label><br>
+      <label><input type="radio" name="cq1" value="c"> Negro</label>
+    </div>
+
+    <div class="quiz-pregunta" style="margin-bottom: 25px;">
+      <p><strong>2. ¿Qué práctica contribuye al ahorro de energía en el trabajo?</strong></p>
+      <label><input type="radio" name="cq2" value="a"> Dejar los cargadores conectados</label><br>
+      <label><input type="radio" name="cq2" value="b"> Apagar luces y equipos cuando no se usen</label><br>
+      <label><input type="radio" name="cq2" value="c"> Imprimir correos innecesarios</label>
+    </div>
+
+    <div class="quiz-pregunta" style="margin-bottom: 25px;">
+      <p><strong>3. ¿Qué impacto ambiental es típico en nuestras operaciones?</strong></p>
+      <label><input type="radio" name="cq3" value="a"> Agotamiento de recursos naturales</label><br>
+      <label><input type="radio" name="cq3" value="b"> Vertimientos directos a fuentes hídricas</label><br>
+      <label><input type="radio" name="cq3" value="c"> Tala industrial de bosques</label>
+    </div>
+
+    <div class="quiz-pregunta" style="margin-bottom: 25px;">
+      <p><strong>4. ¿Cuál es una forma correcta de proteger la fauna en campo?</strong></p>
+      <label><input type="radio" name="cq4" value="a"> Alimentar a los animales silvestres</label><br>
+      <label><input type="radio" name="cq4" value="b"> Tomar crías de animales para cuidarlas</label><br>
+      <label><input type="radio" name="cq4" value="c"> Respetar los hábitats naturales</label>
+    </div>
+
+    <div class="quiz-pregunta" style="margin-bottom: 30px;">
+      <p><strong>5. ¿Qué acción es parte de un hábito sostenible diario?</strong></p>
+      <label><input type="radio" name="cq5" value="a"> Usar botella reutilizable</label><br>
+      <label><input type="radio" name="cq5" value="b"> Comprar botellas plásticas a diario</label><br>
+      <label><input type="radio" name="cq5" value="c"> Imprimir todo en papel nuevo</label>
+    </div>
+
+    <button type="button" onclick="validarQuizCapitulo3()" style="margin-top: 20px;">📤 Enviar respuestas</button>
+    <p id="resultadoQuizCap3" style="margin-top: 20px; font-weight: bold;"></p>
+  </form>
+</section>
+
+
+<section id="capitulo4-cierre">
+  <div class="img-superior-derecha">
+    <img src="https://i.postimg.cc/CLSFNhyN/LOGO-PBI-CASCO-BLANCO.png" alt="Personaje PBI con EPP">
+  </div>
+
+  <h2> CIERRE Y CULTURA CORPORATIVA</h2>
+
+  <p>🎯 Gracias por completar la inducción corporativa de HSEQ . Tu compromiso, coherencia y actitud son fundamentales para garantizar operaciones seguras, sostenibles y de calidad en PBI. ¡Juntos construimos una cultura preventiva!</p>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px;">
+
+    <div class="card">
+      <h4>🎥 Cultura de Seguridad</h4>
+      <p>Refuerza los principios de seguridad industrial que promovemos en nuestra organización. ¡Verlo es parte de tu responsabilidad!</p>
+      <p style="text-align: center;">
+        <a href="https://youtu.be/faHop1FcGNE" target="_blank">🔗 Ver video de seguridad industrial</a>
+      </p>
+    </div>
+
+    <div class="card">
+      <h4>🏢 Orgullo PBI</h4>
+      <p>Conoce más sobre quiénes somos, nuestro alcance operativo, y por qué tu rol es clave en la excelencia corporativa.</p>
+      <p style="text-align: center;">
+        <a href="https://youtu.be/-gRjlWdwpao" target="_blank">🔗 Ver video corporativo de PBI</a>
+      </p>
+    </div>
+
+  </div>
+
+  <p style="margin-top: 30px;"><strong>👉 Da clic en el siguiente botón para presentar tu evaluación y registrar tu participación:</strong></p>
+
+  <p style="text-align:center;">
+    <a class="final-button" href="https://forms.gle/MZKm8awyj1y7WwdM6" target="_blank"
+       style="display:inline-block; padding: 12px 24px; background-color:#28a745; color:white; font-weight:bold; border-radius:6px; text-decoration:none; box-shadow:0 2px 5px rgba(0,0,0,0.2); transition: background-color 0.3s ease;">
+       ✅ Presentar evaluación
+    </a>
+  </p>
+
+  <hr style="margin: 40px 0; border-top: 1px solid #ccc;">
+
+  <p style="font-size: 1.1em; text-align: center;">
+    🧠 <strong>¿Tienes dudas o deseas ampliar la información?</strong><br>
+    Puedes comunicarte con el <strong>Equipo HSEQ</strong> a través de los correos:<br>
+    <a href="mailto:cesteban@pbi.com.co">cesteban@pbi.com.co</a> | <a href="mailto:hmoreno@pbi.com.co">hmoreno@pbi.com.co</a><br>
+    o directamente con el <strong>Equipo HSEQ en campo</strong>.
+  </p>
+
+  <p style="text-align:center; margin-top: 20px;">
+    💡 <strong>Recuerda:</strong> la gestión en <em>Calidad, Seguridad y Medio Ambiente</em> es una responsabilidad de todos.
+  </p>
+</section>
+
+  
+</div>
+
+<div class="nav-buttons">
+  <button id="btnAnterior" onclick="prevSection()">⬅️ Anterior</button>
+  <button id="btnSiguiente" onclick="nextSection()">Siguiente ➡️</button>
+</div>
+<script>
+  let current = 0;
+  let sections = [];
+
+  function actualizarSecciones() {
+    const rol = document.getElementById("rolSeleccionado")?.value;
+    const seccionActualId = sections[current]?.id || null;
+
+    sections = Array.from(document.querySelectorAll("section")).filter(sec => {
+      const dataRol = sec.getAttribute("data-rol");
+      return !dataRol || dataRol === rol;
+    });
+
+    sections.forEach(sec => sec.style.display = "none");
+
+    let nuevaPosicion = 0;
+    if (seccionActualId) {
+      const idx = sections.findIndex(sec => sec.id === seccionActualId);
+      if (idx !== -1) nuevaPosicion = idx;
+    }
+
+    current = nuevaPosicion;
+    show(current);
+  }
+
+  function filtrarContenidoPorRol() {
+    const rol = document.getElementById("rolSeleccionado")?.value;
+    document.querySelectorAll('[data-rol]').forEach(sec => sec.style.display = "none");
+    document.querySelectorAll(`[data-rol="${rol}"]`).forEach(sec => sec.style.display = "block");
+    actualizarSecciones();
+  }
+
+  function show(index) {
+    sections.forEach((s, i) => {
+      s.style.display = i === index ? "block" : "none";
+      s.classList.toggle("active", i === index);
+    });
+
+    document.getElementById("btnAnterior").style.display = (index === 0) ? "none" : "inline-block";
+    document.getElementById("btnSiguiente").style.display = (index === sections.length - 1) ? "none" : "inline-block";
+
+    const barra = document.getElementById("barraProgreso");
+    if (barra) barra.style.width = ((index + 1) / sections.length) * 100 + "%";
+
+    document.getElementById("advertencia-check")?.remove();
+
+    const id = sections[index]?.id;
+
+    if (id === "verificacion-cap1") {
+      actualizarBotonSiguienteVerificacion();
+      sections[index].querySelectorAll('input[type="checkbox"]').forEach(cb =>
+        cb.addEventListener("change", actualizarBotonSiguienteVerificacion)
+      );
+    } else if (id === "reglamento") {
+      actualizarBotonSiguienteReglamento();
+      document.getElementById("checkReglamento")?.addEventListener("change", actualizarBotonSiguienteReglamento);
+    } else if (id === "verificacion-politicas") {
+      actualizarBotonSiguientePoliticas();
+      document.getElementById("check-politicas")?.addEventListener("change", actualizarBotonSiguientePoliticas);
+    } else if (id === "verificacion-vial") {
+      actualizarBotonSiguienteVial();
+      document.getElementById("check-vial")?.addEventListener("change", actualizarBotonSiguienteVial);
+    } else if (id === "quiz-capitulo3") {
+      const aprobado = document.getElementById("resultadoQuizCap3")?.textContent.includes("¡Muy bien!");
+      aprobado ? activarBotonSiguiente() : desactivarBotonSiguiente();
+    } else if (id === "quiz-capitulo2") {
+      const aprobado = document.getElementById("resultadoQuizCap2")?.textContent.includes("¡Muy bien!");
+      aprobado ? activarBotonSiguiente() : desactivarBotonSiguiente();
+    } else if (id === "trivia-sgrl") {
+      const aprobado = document.getElementById("resultadoTrivia")?.textContent.includes("¡Muy bien!");
+      aprobado ? activarBotonSiguiente() : desactivarBotonSiguiente();
+    } else if (id === "trivia-seguridad-comportamiento") {
+      const aprobado = document.getElementById("resultadoTriviaSeguridad")?.textContent.includes("¡Muy bien!");
+      aprobado ? activarBotonSiguiente() : desactivarBotonSiguiente();
+    } else {
+      activarBotonSiguiente();
+    }
+  }
+
+  function nextSection() {
+    const seccionActual = sections[current];
+    const id = seccionActual?.id;
+
+    if (id === "verificacion-cap1" && !todosMarcados(seccionActual)) {
+      mostrarAdvertencia("⚠️ Por favor marca todos los ítems antes de continuar.");
+      return;
+    }
+    if (id === "reglamento" && !document.getElementById("checkReglamento")?.checked) {
+      mostrarAdvertencia("⚠️ Por favor confirma que leíste el reglamento.");
+      return;
+    }
+    if (id === "verificacion-politicas" && !document.getElementById("check-politicas")?.checked) {
+      mostrarAdvertencia("⚠️ Debes confirmar que leíste las políticas.");
+      return;
+    }
+    if (id === "verificacion-vial" && !document.getElementById("check-vial")?.checked) {
+      mostrarAdvertencia("⚠️ Debes confirmar que leíste las políticas de seguridad vial.");
+      return;
+    }
+    if (id === "trivia-sgrl" && !document.getElementById("resultadoTrivia")?.textContent.includes("¡Muy bien!")) {
+      mostrarAdvertencia("⚠️ Resuelve correctamente la trivia antes de continuar.");
+      return;
+    }
+    if (id === "trivia-seguridad-comportamiento" && !document.getElementById("resultadoTriviaSeguridad")?.textContent.includes("¡Muy bien!")) {
+      mostrarAdvertencia("⚠️ Resuelve correctamente la trivia antes de continuar.");
+      return;
+    }
+    if (id === "quiz-capitulo2" && !document.getElementById("resultadoQuizCap2")?.textContent.includes("¡Muy bien!")) {
+      mostrarAdvertencia("⚠️ Debes responder correctamente todas las preguntas del quiz para continuar.");
+      return;
+    }
+    if (id === "quiz-capitulo3" && !document.getElementById("resultadoQuizCap3")?.textContent.includes("¡Muy bien!")) {
+      mostrarAdvertencia("⚠️ Debes responder correctamente todas las preguntas del quiz para continuar.");
+      return;
+    }
+
+    if (current < sections.length - 1) {
+      current++;
+      show(current);
+    }
+  }
+
+  function prevSection() {
+    if (current > 0) {
+      current--;
+      show(current);
+    }
+  }
+
+  function mostrarAdvertencia(mensaje) {
+    if (!document.getElementById("advertencia-check")) {
+      const advertencia = document.createElement("p");
+      advertencia.id = "advertencia-check";
+      advertencia.textContent = mensaje;
+      advertencia.style.color = "red";
+      advertencia.style.marginTop = "15px";
+      sections[current].appendChild(advertencia);
+    }
+  }
+
+  function todosMarcados(seccion) {
+    return Array.from(seccion.querySelectorAll('input[type="checkbox"]')).every(cb => cb.checked);
+  }
+
+  function activarBotonSiguiente() {
+    const btn = document.getElementById("btnSiguiente");
+    btn.disabled = false;
+    btn.style.cursor = "pointer";
+    btn.style.opacity = "1";
+  }
+
+  function desactivarBotonSiguiente() {
+    const btn = document.getElementById("btnSiguiente");
+    btn.disabled = true;
+    btn.style.cursor = "not-allowed";
+    btn.style.opacity = "0.6";
+  }
+
+  function actualizarBotonSiguienteVerificacion() {
+    todosMarcados(sections[current]) ? activarBotonSiguiente() : desactivarBotonSiguiente();
+  }
+
+  function actualizarBotonSiguienteReglamento() {
+    document.getElementById("checkReglamento")?.checked ? activarBotonSiguiente() : desactivarBotonSiguiente();
+  }
+
+  function actualizarBotonSiguientePoliticas() {
+    document.getElementById("check-politicas")?.checked ? activarBotonSiguiente() : desactivarBotonSiguiente();
+  }
+
+  function actualizarBotonSiguienteVial() {
+    document.getElementById("check-vial")?.checked ? activarBotonSiguiente() : desactivarBotonSiguiente();
+  }
+
+  function validarTrivia() {
+    const respuestas = { p1: "c", p2: "b", p3: "c" };
+    let correctas = contarCorrectas(respuestas);
+    mostrarResultadoTrivia(correctas === 3, "resultadoTrivia");
+  }
+
+  function validarTriviaSeguridad() {
+    const respuestas = { sc_p1: "c", sc_p2: "b", sc_p3: "b", sc_p4: "c" };
+    let correctas = contarCorrectas(respuestas);
+    mostrarResultadoTrivia(correctas === 4, "resultadoTriviaSeguridad");
+  }
+
+  function validarTriviaCapitulo2() {
+    const respuestas = { q1: "c", q2: "b", q3: "b", q4: "b", q5: "b" };
+    let correctas = 0;
+    for (const [pregunta, correcta] of Object.entries(respuestas)) {
+      const seleccionada = document.querySelector(`input[name="${pregunta}"]:checked`);
+      if (seleccionada && seleccionada.value === correcta) correctas++;
+    }
+
+    const resultado = document.getElementById("resultadoQuizCap2");
+    if (!resultado) return;
+
+    if (correctas === Object.keys(respuestas).length) {
+      resultado.innerHTML = "✅ ¡Muy bien! Has respondido correctamente todas las preguntas.";
+      resultado.style.color = "green";
+      activarBotonSiguiente();
+    } else {
+      resultado.innerHTML = "⚠️ Por favor responde correctamente todas las preguntas para continuar.";
+      resultado.style.color = "red";
+      desactivarBotonSiguiente();
+    }
+  }
+
+  function validarQuizCapitulo3() {
+    const respuestas = { cq1: "a", cq2: "b", cq3: "a", cq4: "c", cq5: "a" };
+    let correctas = 0;
+    for (const [pregunta, correcta] of Object.entries(respuestas)) {
+      const seleccionada = document.querySelector(`input[name="${pregunta}"]:checked`);
+      if (seleccionada && seleccionada.value === correcta) correctas++;
+    }
+
+    const resultado = document.getElementById("resultadoQuizCap3");
+    if (!resultado) return;
+
+    if (correctas === Object.keys(respuestas).length) {
+      resultado.innerHTML = "✅ ¡Muy bien! Has respondido correctamente todas las preguntas.";
+      resultado.style.color = "green";
+      activarBotonSiguiente();
+    } else {
+      resultado.innerHTML = "⚠️ Por favor responde correctamente todas las preguntas para continuar.";
+      resultado.style.color = "red";
+      desactivarBotonSiguiente();
+    }
+  }
+
+  function contarCorrectas(respuestas) {
+    let aciertos = 0;
+    for (const [p, val] of Object.entries(respuestas)) {
+      const r = document.querySelector(`input[name="${p}"]:checked`);
+      if (r?.value === val) aciertos++;
+    }
+    return aciertos;
+  }
+
+  function mostrarResultadoTrivia(esCorrecto, idResultado) {
+    const resultado = document.getElementById(idResultado);
+    if (!resultado) return;
+    if (esCorrecto) {
+      resultado.innerHTML = "🎉 ¡Muy bien! Has respondido correctamente todas las preguntas.";
+      resultado.style.color = "green";
+      activarBotonSiguiente();
+    } else {
+      resultado.innerHTML = "⚠️ Revisa tus respuestas. Debes acertar todas para continuar.";
+      resultado.style.color = "red";
+      desactivarBotonSiguiente();
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    actualizarSecciones();
+    document.getElementById("rolSeleccionado")?.addEventListener("change", filtrarContenidoPorRol);
+    document.querySelectorAll(".acordeon").forEach(btn => {
+      btn.addEventListener("click", function () {
+        this.classList.toggle("activo");
+        const panel = this.nextElementSibling;
+        panel.style.display = panel.style.display === "block" ? "none" : "block";
+      });
+    });
+  });
+</script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
